@@ -1,3 +1,15 @@
+/*
+ _  _     _                                      _   _           
+| || |___| |_ __   _  _ ___ _  _   _ __  __ _ __| |_(_)_ _  __ _ 
+| __ / -_) | '_ \ | || / _ \ || | | '_ \/ _` / _| / / | ' \/ _` |
+|_||_\___|_| .__/  \_, \___/\_,_| | .__/\__,_\__|_\_\_|_||_\__, |
+           |_|     |__/           |_|                      |___/
+
+with Woon and Neva :)
+
+- D-day calculate doesn't work for now...
+*/
+
 var weatherDataArray = [];
 var ourIcon = {
     '01d' : 'images/01d.png', 
@@ -21,10 +33,11 @@ var ourIcon = {
     '50n' : 'images/02d.png'
 };
 var iconImage;
+var stuff = '';
 
 function getCurrentWeatherData(city){
     var myURL = 'http://api.openweathermap.org/data/2.5/forecast/daily?q='
-                + city + '&mode=json&units=metric&cnt=7';
+                + city + '&mode=json&units=metric&cnt=16';
     $.ajax({
         url: myURL,
         type: 'GET',
@@ -37,28 +50,95 @@ function getCurrentWeatherData(city){
                 var maxTemp = data.list[i].temp.max;
                 var minTemp = data.list[i].temp.min;
                 var iconID = data.list[i].weather[0].icon;
+                var weather = data.list[i].weather[0].main;
+                var weatherDetail = data.list[i].weather[0].description;
+                
+                var unixDate = data.list[i].dt;
 
+                var d = new Date(unixDate * 1000);
+                var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                var month = months[d.getMonth()];
+                var date = d.getDate();
+
+                var ourDate = month + ". " +date;
+
+                //onsole.log(month);
+                //console.log(date);
                 //console.log(iconID);
 
+                ///// ICON ////
                 // looping through our icon object
                 for ( var key in ourIcon){
-                    // console.log(ourIcon[key]); // images/01d.png 
-                    
+                    // console.log(ourIcon[key]); // images/01d.png               
                     // if icon id is matched, display with our icons
                     if ( key === iconID ){
-                        console.log("we have matched one");
+                        //console.log("we have matched one");
                         iconImage = '<img src="' + ourIcon[key] + '">';
                     } 
-                    // this one doesn't work
-                    // else {
-                    //     console.log("we don't have that");
-                    //     iconImage = '<img src="http://openweathermap.org/img/w/50n.png">';
-                    // }
                 }
 
+
+                //// WEATHER ////
+                if ( weather.toLowerCase() === 'rain' || weather.toLowerCase() === 'drizzle'  ) stuff = '*** UMBRELLA ***';
+                if ( weather.toLowerCase() === 'snow') stuff = '*** ski *** ';
+                if ( weather.toLowerCase() === 'clear' || weather.toLowerCase() === 'clouds' ) stuff = '*** sunblock cream ***';
+
                 // append to the div
-                $('#dataPrint').append('max: ' + maxTemp+ ' min: ' + minTemp + ' ' + iconImage + '<br>');
+                if ( i < 8 ){
+                    $('#dataPrint_top').append( '<div class="dateDiv"'+ 'id="'+ unixDate +'">' + ourDate + '</a>' + ' ' +
+                                        'max: ' + maxTemp + 
+                                        ' min: ' + minTemp + ' ' + 
+                                        iconImage + ' ' +
+                                        weather + ' ' + 
+                                        stuff + '</div>');
+                } else {
+                    $('#dataPrint_bottom').append( '<div class="dateDiv"'+ 'id="'+ unixDate +'">' + ourDate + '</a>' + ' ' +
+                                        'max: ' + maxTemp + 
+                                        ' min: ' + minTemp + ' ' + 
+                                        iconImage + ' ' +
+                                        weather + ' ' + 
+                                        stuff + '</div>');
+                }
             }
+
+
+            // hover effect
+            $('.dateDiv').hover(function(){ // hover
+                $(this).toggleClass("dateDivHover");
+            }).click(function(){ // click
+
+                //////// ????????
+                clearInterval(calculate);
+                var countdown = document.getElementById("countdown");
+                $(countdown).html('');
+
+                var travelDate = parseInt(this.id) * 1000; // get millisecond
+                //console.log(travelDate);
+
+                // it will run every second
+                var calculate = setInterval(function(){
+                    // variables for time units
+                    var days, hours, minutes, seconds;
+                    // find the amount of "seconds" between now and target
+                    var today = new Date().getTime();
+                    var seconds_left = (travelDate - today) / 1000;
+
+                    // do some time calculations
+                    days = parseInt(seconds_left / 86400);
+                    seconds_left = seconds_left % 86400;
+                     
+                    hours = parseInt(seconds_left / 3600);
+                    seconds_left = seconds_left % 3600;
+                     
+                    minutes = parseInt(seconds_left / 60);
+                    seconds = parseInt(seconds_left % 60);
+
+                    // format countdown string + set tag value
+                    countdown.innerHTML = days + "d, " + hours + "h, "
+                    + minutes + "m, " + seconds + "s";  
+                }, 1000); 
+
+            });
 
         },
         error: function(data){
@@ -70,10 +150,12 @@ function getCurrentWeatherData(city){
 $(document).ready(function(){
 
 
+    // when search button is pressed
     $('#searchWeather').click(function(){
+        // empty the div first
         $('#dataPrint').html('');
 
-        //console.log("this button is clicked");
+        // get the city value from inputs
         var city = $('#city').val();
         console.log(city);
 

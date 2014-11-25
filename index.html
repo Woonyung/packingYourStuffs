@@ -10,20 +10,36 @@
         <meta name="viewport" content="width=device-width">
     </head>
     <!-- stylesheet -->
-    <style>
-        body {
-            background-color: aqua;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
 
     <body>
-        <div id="inputData">
-            <input type="text" id="city">
-            <button id="searchWeather">SEARCH</button>
+        <!-- intro -->
+        <div id="intro"></div>
+
+        <!-- weather -->
+        <div id="weather">
+            <div id="wrapper">
+                <div id="inputData">
+                    <input type="text" id="city" placeholder="city">
+                    <button id="searchWeather">SEARCH</button>
+                </div>
+                
+                <br>
+
+                <div id="dataPrint_wrap">
+                    <div id="dataPrint_top"></div>
+                    <br>
+                    <div id="dataPrint_bottom"></div>
+                </div>
+                <div id="countdown"></div>
+
+            </div>
         </div>
 
-        <div id="dataPrint"></div>
+        <!-- packing -->
+        <div id="packing">
+        </div>
     </body>
     
     <!-- scripts -->
