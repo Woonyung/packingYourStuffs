@@ -1,0 +1,20 @@
+1. search city / place   +  purpose of the trip
+2. get weather data
+3. based on the weather data (rain/ temperature, etc)
+	you get the item that you have to bring
+	(is it possible to know its season?)
+
+Basic item: 
+	- umbrella (rain), hat, sunblock cream (UV rays - API ?? )
+	- cap, scarf, skii
+	- vikini
+
+3.5 ) do the animation with illustrations
+checklist ----> emptybag ---> filled item
+	a. essential one ( umbrella, cap , sunblock cream )
+	b. personl stuffs ( contacts, charger, film rolls )
+
+
+4. for multiple people
+	share your packing stuffs to others - but not for the public **** 
+	data ----> server ----> response ( will tell you which items they picked up )
