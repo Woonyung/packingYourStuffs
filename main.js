@@ -10,6 +10,8 @@ with Woon and Neva :)
 - D-day calculate doesn't work for now...
 */
 
+var calculate;
+
 var weatherDataArray = [];
 var ourIcon = {
     '01d' : 'images/01d.png', 
@@ -107,8 +109,10 @@ function getCurrentWeatherData(city){
                 $(this).toggleClass("dateDivHover");
             }).click(function(){ // click
 
-                //////// ????????
-                clearInterval(calculate);
+                if (calculate !== undefined) {
+                    clearInterval(calculate);
+                }
+
                 var countdown = document.getElementById("countdown");
                 $(countdown).html('');
 
@@ -116,7 +120,8 @@ function getCurrentWeatherData(city){
                 //console.log(travelDate);
 
                 // it will run every second
-                var calculate = setInterval(function(){
+                
+                calculate = setInterval(function(){
                     // variables for time units
                     var days, hours, minutes, seconds;
                     // find the amount of "seconds" between now and target
