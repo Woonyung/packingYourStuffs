@@ -14,11 +14,8 @@
 
 
     <body>
-        <!-- intro -->
-        <div id="intro"></div>
-
         <!-- weather -->
-        <div id="weather">
+        <div id="intro">
             <div id="wrapper">
                 <div id="inputData">
                     <input type="text" id="city" placeholder="city">
@@ -28,12 +25,18 @@
                 <br>
 
                 <div id="dataPrint_wrap">
+                    select the date you are going to travel
                     <div id="dataPrint_top"></div>
-                    <br>
+                    
                     <div id="dataPrint_bottom"></div>
                 </div>
                 <div id="countdown"></div>
 
+                <div id="purposes">
+                    <button class="purposes" id="business">business</button>
+                    <button class="purposes" id="skiing">skiing</button>
+                    <button class="purposes" id="swimming">swimming</button>
+                </div>
             </div>
         </div>
 
@@ -43,7 +46,7 @@
     </body>
     
     <!-- scripts -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
     
     <script src="main.js"></script>
 </html>

@@ -13,6 +13,14 @@ with Woon and Neva :)
 var calculate;
 
 var weatherDataArray = [];
+
+var purposes = {
+    'business': false,
+    'skiing': false,
+    'swimming': false
+}
+
+
 var ourIcon = {
     '01d' : 'images/01d.png', 
     '02d' : 'images/02d.png',
@@ -39,7 +47,7 @@ var stuff = '';
 
 function getCurrentWeatherData(city){
     var myURL = 'http://api.openweathermap.org/data/2.5/forecast/daily?q='
-                + city + '&mode=json&units=metric&cnt=16';
+                + city + '&mode=json&units=metric&cnt=12';
     $.ajax({
         url: myURL,
         type: 'GET',
@@ -86,7 +94,7 @@ function getCurrentWeatherData(city){
                 if ( weather.toLowerCase() === 'clear' || weather.toLowerCase() === 'clouds' ) stuff = '*** sunblock cream ***';
 
                 // append to the div
-                if ( i < 8 ){
+                if ( i < 6 ){
                     $('#dataPrint_top').append( '<div class="dateDiv"'+ 'id="'+ unixDate +'">' + ourDate + '</a>' + ' ' +
                                         'max: ' + maxTemp + 
                                         ' min: ' + minTemp + ' ' + 
@@ -154,6 +162,19 @@ function getCurrentWeatherData(city){
 
 $(document).ready(function(){
 
+    $("#business").toggle(
+        function () {
+          $(this).css({"background-color":"red"});
+          purposes['business'] = true;
+          console.log( purposes['business']); // true
+        },
+        function () {
+          $(this).css({"background-color":"black"});
+          purposes['business'] = false;
+          console.log( purposes['business']); // false
+    });
+   
+
 
     // when search button is pressed
     $('#searchWeather').click(function(){
@@ -167,5 +188,7 @@ $(document).ready(function(){
         // get weather API data
         getCurrentWeatherData(city);
     });
+
+
 
 });
