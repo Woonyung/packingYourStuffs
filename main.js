@@ -7,7 +7,8 @@
 
 with Woon and Neva :)
 
-- D-day calculate doesn't work for now...
+- try to make click button function - that passes tagsname as parameters
+and try to append images from the json file that we have
 */
 
 var calculate;
@@ -45,24 +46,21 @@ var ourIcon = {
 var iconImage;
 var stuff = '';
 
+// empty array for holding all the items that matches to the tags
+var emptyStuffObject = {};
+
+// //////////// temporary thing
+// var businessThing = "<div class='objects businessThing'><img id='folder' src='images/folder.png'></div>";
+// var swimmingThing = "<div class='objects swimmingThing' ><img id='bikini' src='images/bikini.png'></div>";
+// var skiingThing = "<div class='objects skiingThing'><img id='hat' src='images/hat.png'></div>";
+// ///////////
+
+
 /*
     possible weathers:
     thunderstorm, drizzle, rain, snow, atmosphere (volcanic ashes, tornado), 
     clouds, extreme ( hail, tornado)
 */
-
-
-// empty array for holding all the items that matches to the tags
-var emptyStuffObject = {};
-
-
-////////////
-var businessThing = "<div class='objects businessThing'><img id='folder' src='images/folder.png'></div>";
-var swimmingThing = "<div class='objects swimmingThing' ><img id='bikini' src='images/bikini.png'></div>";
-var skiingThing = "<div class='objects skiingThing'><img id='hat' src='images/hat.png'></div>";
-///////////
-
-
 function getCurrentWeatherData(city){
     var myURL = 'http://api.openweathermap.org/data/2.5/forecast/daily?q='
                 + city + '&mode=json&units=metric&cnt=12';
@@ -180,31 +178,81 @@ function getCurrentWeatherData(city){
     });
 }
 
+
 function loadStuffs(purposes){
    //////////////////////////////////////////
    // get json file
+
+   var results = {};
    $.getJSON( "stuff.json", function(data) {
-        var results = data;
+        results = data;
         emptyStuffObject[purposes] = [];
 
        // looping through all stuffs
        for ( var item in results){
-           //console.log(item); // name
+           // console.log(item); // name
            //console.log(results[item]);
            var tempItem = results[item];
 
            // if tags are matched with purposes  
            if ( _.contains(results[item].tags, purposes)) {
-                console.log("business is found");
                 emptyStuffObject[purposes].push(results[item]);
            }
-   
        }
-       console.log(emptyStuffObject);
+       console.log(results);
    });
+   console.log(results);
+   return emptyStuffObject;
 }
 
+
+var myJsonStuff = {};
+var gotJSON = false;
+
+function dealWithResults(data){
+    //do all stuff with results here;
+    console.log(data);
+    myJsonStuff = data;
+    gotJSON = true;
+
+}
+
+
+function clickbutton (tagg){
+    console.log("click button function");
+    $("#"+tagg).toggle(
+        function () {
+            $(this).css({"background-color":"red"});
+            purposes[tagg] = true;
+            console.log( purposes[tagg]); // true
+            if(purposes[tagg] == true) {
+                console.log("true");
+
+                // load json file
+                // var test = loadStuffs(tagg);
+                if(gotJSON){
+                    //do stuff
+                    console.log(myJsonStuff);
+                }
+                else{
+                    console.log("json not loaded");
+                }
+                
+                // $('#bagDiv').prepend("." + tagg);
+            }
+        },
+        function () {
+          $(this).css({"background-color":"black"});
+          purposes[tagg] = false;
+          //console.log( purposes['skiing']); // false
+          $('.skiingThing').html('');
+    });
+}
+
+
 $(document).ready(function(){
+
+    $.getJSON( "stuff.json", dealWithResults);
 
     // scroll library <3
     $(".main").onepage_scroll({
@@ -220,7 +268,6 @@ $(document).ready(function(){
 
         direction: 'vertical'
     });
-
 
     ////////// SECTION 1 //////////
 
@@ -247,6 +294,7 @@ $(document).ready(function(){
             //console.log( purposes['business']); // true
             if(purposes['business'] == true) {
                 console.log("true");
+                // load json file
                 loadStuffs('business');
                 $('#bagDiv').prepend(businessThing);
             }
@@ -264,10 +312,12 @@ $(document).ready(function(){
             $(this).css({"background-color":"red"});
             purposes['swimming'] = true;
             //console.log( purposes['swimming']); // true
-            // if(purposes['swimming'] == true) {
-            //     console.log("true");
-            //     $('#bagDiv').prepend(swimmingThing);
-            // }
+            if(purposes['swimming'] == true) {
+                console.log("true");
+                // load json file
+                loadStuffs('swimming');
+                $('#bagDiv').prepend(swimmingThing);
+            }
         },
         function () {
           $(this).css({"background-color":"black"});
@@ -276,27 +326,13 @@ $(document).ready(function(){
           $('.swimmingThing').html('');
     });
 
-    $("#skiing").toggle(
-        function () {
-            $(this).css({"background-color":"red"});
-            purposes['skiing'] = true;
-            //console.log( purposes['skiing']); // true
-            if(purposes['skiing'] == true) {
-                console.log("true");
-                $('#bagDiv').prepend(skiingThing);
-            }
-        },
-        function () {
-          $(this).css({"background-color":"black"});
-          purposes['skiing'] = false;
-          //console.log( purposes['skiing']); // false
-          $('.skiingThing').html('');
+    
+    clickbutton('skiing');
+
+    // clear the bag
+    $('#clear').click(function(){
+        $('#bagDiv').html('');
     });
 
-   $('#clear').click(function(){
-        $('#bagDiv').html('');
-   });
-
-   // get json
 
 });
