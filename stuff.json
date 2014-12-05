@@ -1,0 +1,48 @@
+{
+    "bikini": {
+        "tags": ["swimming"],
+        "weather": ["sunny"],
+        "url": "images/bikini.png"
+    },
+    "folder": {
+        "tags": ["business"],
+        "weather": [],
+        "url": "images/folder.png"
+    },
+    "goggle": {
+        "tags": ["skiing"],
+        "weather": ["snow"],
+        "url": "images/goggle.png"
+    },
+    "hat": {
+        "tags": ["skiing"],
+        "weather": ["snow"],
+        "url": "images/hat.png"
+    },
+    "laptop": {
+        "tags": ["skiing", "business"],
+        "weather": [],
+        "url": "images/laptop.png"
+    },
+    "pen": {
+        "tags": ["business"],
+        "weather": [],
+        "url": "images/pen.png"
+    },
+    "skies": {
+        "tags": ["skiing"],
+        "weather": ["snow"],
+        "url": "images/skies.png"
+    },
+    "sunblock": {
+        "tags": ["swimming", "business"],
+        "weather": ["sunny"],
+        "url": "images/sunblock.png"
+    },
+    "sunglasses": {
+        "tags": ["swimming", "business"],
+        "weather": ["sunny"],
+        "url": "images/sunglasses.png"
+    }
+
+}

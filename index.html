@@ -8,45 +8,70 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-    </head>
-    <!-- stylesheet -->
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-
-
-    <body>
-        <!-- weather -->
-        <div id="intro">
-            <div id="wrapper">
-                <div id="inputData">
-                    <input type="text" id="city" placeholder="city">
-                    <button id="searchWeather">SEARCH</button>
-                </div>
-                
-                <br>
-
-                <div id="dataPrint_wrap">
-                    select the date you are going to travel
-                    <div id="dataPrint_top"></div>
-                    
-                    <div id="dataPrint_bottom"></div>
-                </div>
-                <div id="countdown"></div>
-
-                <div id="purposes">
-                    <button class="purposes" id="business">business</button>
-                    <button class="purposes" id="skiing">skiing</button>
-                    <button class="purposes" id="swimming">swimming</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- packing -->
-        <div id="packing">
-        </div>
-    </body>
+        
+        <!-- scripts -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
     
-    <!-- scripts -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <!-- onepage scroll -->
+        <script type="text/javascript" src="jquery.onepage-scroll.js"></script>
+        <link href='onepage-scroll.css' rel='stylesheet' type='text/css'>
+
+        <!-- stylesheet -->
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    </head>
+    
+    <body>
+        <div class="main">
+            <!-- weather -->
+            <section class="page1">
+                <div id="wrapper1">
+                    <div id="inputData">
+                        <input type="text" id="city" placeholder="city">
+                        <button id="searchWeather">SEARCH</button>
+                    </div>
+                    
+                    <br>
+
+                    <div id="dataPrint_wrap">
+                        select the date you are going to travel
+                        <div id="dataPrint_top"></div>
+                        
+                        <div id="dataPrint_bottom"></div>
+                    </div>
+                    <div id="countdown"></div>
+
+                    <div id="purposes">
+                        <button class="purposes" id="business">business</button>
+                        <button class="purposes" id="skiing">skiing</button>
+                        <button class="purposes" id="swimming">swimming</button>
+                    </div>
+                </div>
+            </section>
+
+            
+            <section class="page2">
+                <div id="wrapper2">
+                    <div id="wrapperForButton">
+                        <button class="buttons" id="add">+</button>
+                        <button class="buttons" id="clear">clear bag</button>
+                        <button class="buttons" id="save">save</button>
+                        <button class="buttons" id="print">print</button>
+                    </div>
+
+                    <div id="bagDiv">
+                        <!-- <img src="images/c_bag.png" id="bag"> -->
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="page3">
+                Done by Neva and Woon with Love &#60;3
+            </section>
+
+        </div> <!-- main -->
+    </body>
     
     <script src="main.js"></script>
 </html>

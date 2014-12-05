@@ -45,6 +45,24 @@ var ourIcon = {
 var iconImage;
 var stuff = '';
 
+/*
+    possible weathers:
+    thunderstorm, drizzle, rain, snow, atmosphere (volcanic ashes, tornado), 
+    clouds, extreme ( hail, tornado)
+*/
+
+
+// empty array for holding all the items that matches to the tags
+var emptyStuffObject = {};
+
+
+////////////
+var businessThing = "<div class='objects businessThing'><img id='folder' src='images/folder.png'></div>";
+var swimmingThing = "<div class='objects swimmingThing' ><img id='bikini' src='images/bikini.png'></div>";
+var skiingThing = "<div class='objects skiingThing'><img id='hat' src='images/hat.png'></div>";
+///////////
+
+
 function getCurrentWeatherData(city){
     var myURL = 'http://api.openweathermap.org/data/2.5/forecast/daily?q='
                 + city + '&mode=json&units=metric&cnt=12';
@@ -72,10 +90,6 @@ function getCurrentWeatherData(city){
 
                 var ourDate = month + ". " +date;
 
-                //onsole.log(month);
-                //console.log(date);
-                //console.log(iconID);
-
                 ///// ICON ////
                 // looping through our icon object
                 for ( var key in ourIcon){
@@ -89,9 +103,15 @@ function getCurrentWeatherData(city){
 
 
                 //// WEATHER ////
-                if ( weather.toLowerCase() === 'rain' || weather.toLowerCase() === 'drizzle'  ) stuff = '*** UMBRELLA ***';
-                if ( weather.toLowerCase() === 'snow') stuff = '*** ski *** ';
-                if ( weather.toLowerCase() === 'clear' || weather.toLowerCase() === 'clouds' ) stuff = '*** sunblock cream ***';
+                if ( weather.toLowerCase() === 'rain' || weather.toLowerCase() === 'drizzle'  ){
+                    //stuff = '*** UMBRELLA ***';
+                }
+                if ( weather.toLowerCase() === 'snow'){
+
+                };
+                if ( weather.toLowerCase() === 'clear' || weather.toLowerCase() === 'clouds' ){
+                    //stuff = '*** sunblock cream ***';
+                }
 
                 // append to the div
                 if ( i < 6 ){
@@ -160,21 +180,49 @@ function getCurrentWeatherData(city){
     });
 }
 
+function loadStuffs(purposes){
+   //////////////////////////////////////////
+   // get json file
+   $.getJSON( "stuff.json", function(data) {
+        var results = data;
+        emptyStuffObject[purposes] = [];
+
+       // looping through all stuffs
+       for ( var item in results){
+           //console.log(item); // name
+           //console.log(results[item]);
+           var tempItem = results[item];
+
+           // if tags are matched with purposes  
+           if ( _.contains(results[item].tags, purposes)) {
+                console.log("business is found");
+                emptyStuffObject[purposes].push(results[item]);
+           }
+   
+       }
+       console.log(emptyStuffObject);
+   });
+}
+
 $(document).ready(function(){
 
-    $("#business").toggle(
-        function () {
-          $(this).css({"background-color":"red"});
-          purposes['business'] = true;
-          console.log( purposes['business']); // true
-        },
-        function () {
-          $(this).css({"background-color":"black"});
-          purposes['business'] = false;
-          console.log( purposes['business']); // false
-    });
-   
+    // scroll library <3
+    $(".main").onepage_scroll({
+        sectionContainer: "section",
+        responsiveFallback: 600,
+        animationTime: 1000,
+        afterMove: function(index) {
+          // bag animation
+          console.log("moved");
+        }, 
+        loop: true,
+        keyboard: true,
 
+        direction: 'vertical'
+    });
+
+
+    ////////// SECTION 1 //////////
 
     // when search button is pressed
     $('#searchWeather').click(function(){
@@ -190,5 +238,65 @@ $(document).ready(function(){
     });
 
 
+    ////////// SECTION 2 //////////
+    // purposes tags 
+    $("#business").toggle(
+        function () {
+            $(this).css({"background-color":"red"});
+            purposes['business'] = true;
+            //console.log( purposes['business']); // true
+            if(purposes['business'] == true) {
+                console.log("true");
+                loadStuffs('business');
+                $('#bagDiv').prepend(businessThing);
+            }
+        },
+        function () {
+          $(this).css({"background-color":"black"});
+          purposes['business'] = false;
+          $('.businessThing').html('');
+
+    });
+
+
+    $("#swimming").toggle(
+        function () {
+            $(this).css({"background-color":"red"});
+            purposes['swimming'] = true;
+            //console.log( purposes['swimming']); // true
+            // if(purposes['swimming'] == true) {
+            //     console.log("true");
+            //     $('#bagDiv').prepend(swimmingThing);
+            // }
+        },
+        function () {
+          $(this).css({"background-color":"black"});
+          purposes['swimming'] = false;
+          //console.log( purposes['swimming']); // false
+          $('.swimmingThing').html('');
+    });
+
+    $("#skiing").toggle(
+        function () {
+            $(this).css({"background-color":"red"});
+            purposes['skiing'] = true;
+            //console.log( purposes['skiing']); // true
+            if(purposes['skiing'] == true) {
+                console.log("true");
+                $('#bagDiv').prepend(skiingThing);
+            }
+        },
+        function () {
+          $(this).css({"background-color":"black"});
+          purposes['skiing'] = false;
+          //console.log( purposes['skiing']); // false
+          $('.skiingThing').html('');
+    });
+
+   $('#clear').click(function(){
+        $('#bagDiv').html('');
+   });
+
+   // get json
 
 });
