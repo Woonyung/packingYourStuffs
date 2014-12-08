@@ -47,12 +47,12 @@ var iconImage;
 var stuff = '';
 
 // empty array for holding all the items that matches to the tags
-var emptyStuffObject = {};
+var stuffToPack = {};
 
 // //////////// temporary thing
-// var businessThing = "<div class='objects businessThing'><img id='folder' src='images/folder.png'></div>";
-// var swimmingThing = "<div class='objects swimmingThing' ><img id='bikini' src='images/bikini.png'></div>";
-// var skiingThing = "<div class='objects skiingThing'><img id='hat' src='images/hat.png'></div>";
+var businessThing = "<div class='objects businessThing'><img id='folder' src='images/folder.png'></div>";
+var swimmingThing = "<div class='objects swimmingThing' ><img id='bikini' src='images/bikini.png'></div>";
+var skiingThing = "<div class='objects skiingThing'><img id='hat' src='images/hat.png'></div>";
 // ///////////
 
 
@@ -180,29 +180,21 @@ function getCurrentWeatherData(city){
 
 
 function loadStuffs(purposes){
-   //////////////////////////////////////////
-   // get json file
+    // console.log("i am in loadStuff :" + myJsonStuff);
+  
+    stuffToPack[purposes] = [];
 
-   var results = {};
-   $.getJSON( "stuff.json", function(data) {
-        results = data;
-        emptyStuffObject[purposes] = [];
+    // looping through all stuffs
+    for ( var item in myJsonStuff){
+        // console.log(item); // name
 
-       // looping through all stuffs
-       for ( var item in results){
-           // console.log(item); // name
-           //console.log(results[item]);
-           var tempItem = results[item];
-
-           // if tags are matched with purposes  
-           if ( _.contains(results[item].tags, purposes)) {
-                emptyStuffObject[purposes].push(results[item]);
-           }
-       }
-       console.log(results);
-   });
-   console.log(results);
-   return emptyStuffObject;
+        // if tags are matched with purposes  
+        if ( _.contains(myJsonStuff[item].tags, purposes)) {
+             stuffToPack[purposes].push(myJsonStuff[item]);           
+        }
+    }
+    console.log(myJsonStuff);
+    return stuffToPack;
 }
 
 
@@ -214,7 +206,6 @@ function dealWithResults(data){
     console.log(data);
     myJsonStuff = data;
     gotJSON = true;
-
 }
 
 
@@ -229,10 +220,13 @@ function clickbutton (tagg){
                 console.log("true");
 
                 // load json file
-                // var test = loadStuffs(tagg);
+                //console.log(test);
                 if(gotJSON){
                     //do stuff
                     console.log(myJsonStuff);
+                    var test = loadStuffs(tagg);
+                    console.log(test);
+                    $('#bagDiv').prepend(myJsonStuff);
                 }
                 else{
                     console.log("json not loaded");
@@ -242,10 +236,11 @@ function clickbutton (tagg){
             }
         },
         function () {
+
           $(this).css({"background-color":"black"});
           purposes[tagg] = false;
           //console.log( purposes['skiing']); // false
-          $('.skiingThing').html('');
+          // $('.skiingThing').html('');
     });
 }
 
@@ -287,52 +282,48 @@ $(document).ready(function(){
 
     ////////// SECTION 2 //////////
     // purposes tags 
-    $("#business").toggle(
-        function () {
-            $(this).css({"background-color":"red"});
-            purposes['business'] = true;
-            //console.log( purposes['business']); // true
-            if(purposes['business'] == true) {
-                console.log("true");
-                // load json file
-                loadStuffs('business');
-                $('#bagDiv').prepend(businessThing);
-            }
-        },
-        function () {
-          $(this).css({"background-color":"black"});
-          purposes['business'] = false;
-          $('.businessThing').html('');
+    // $("#business").toggle(
+    //     function () {
+    //         $(this).css({"background-color":"red"});
+    //         purposes['business'] = true;
+    //         //console.log( purposes['business']); // true
+    //         if(purposes['business'] == true) {
+    //             console.log("true");
+    //             // load json file
+    //             loadStuffs('business');
+    //             $('#bagDiv').prepend(businessThing);
+    //         }
+    //     },
+    //     function () {
+    //       $(this).css({"background-color":"black"});
+    //       purposes['business'] = false;
+    //       $('.businessThing').html('');
 
-    });
+    // });
 
 
-    $("#swimming").toggle(
-        function () {
-            $(this).css({"background-color":"red"});
-            purposes['swimming'] = true;
-            //console.log( purposes['swimming']); // true
-            if(purposes['swimming'] == true) {
-                console.log("true");
-                // load json file
-                loadStuffs('swimming');
-                $('#bagDiv').prepend(swimmingThing);
-            }
-        },
-        function () {
-          $(this).css({"background-color":"black"});
-          purposes['swimming'] = false;
-          //console.log( purposes['swimming']); // false
-          $('.swimmingThing').html('');
-    });
-
+    // $("#swimming").toggle(
+    //     function () {
+    //         $(this).css({"background-color":"red"});
+    //         purposes['swimming'] = true;
+    //         //console.log( purposes['swimming']); // true
+    //         if(purposes['swimming'] == true) {
+    //             console.log("true");
+    //             // load json file
+    //             loadStuffs('swimming');
+    //             $('#bagDiv').prepend(swimmingThing);
+    //         }
+    //     },
+    //     function () {
+    //       $(this).css({"background-color":"black"});
+    //       purposes['swimming'] = false;
+    //       //console.log( purposes['swimming']); // false
+    //       $('.swimmingThing').html('');
+    // });
     
+    clickbutton('business');
     clickbutton('skiing');
-
-    // clear the bag
-    $('#clear').click(function(){
-        $('#bagDiv').html('');
-    });
+    clickbutton('swimming');
 
 
 });
