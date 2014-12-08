@@ -190,13 +190,33 @@ function loadStuffs(purposes){
 
         // if tags are matched with purposes  
         if ( _.contains(myJsonStuff[item].tags, purposes)) {
-             stuffToPack[purposes].push(myJsonStuff[item]);           
+             stuffToPack[purposes].push(myJsonStuff[item]);        
         }
     }
-    console.log(myJsonStuff);
+    console.log(stuffToPack);
+    // for ( var purpose in stuffToPack){
+    //     for ( var i = 0; i < stuffToPack[purpose].length; i++){
+    //         console.log(stuffToPack[purpose][i].url);
+    //         var image = stuffToPack[purpose][i].url;
+    //         $('#bagDiv').prepend('<img src="' + image + '">');
+    //     }
+    // }
+
     return stuffToPack;
 }
 
+function updateImages(stuffToPack){
+    console.log("showing images function");
+    // first, clear the div
+    $('#bagDiv').empty();
+    for ( var purpose in stuffToPack){
+        for ( var i = 0; i < stuffToPack[purpose].length; i++){
+            console.log(stuffToPack[purpose][i].url);
+            var image = stuffToPack[purpose][i].url;
+            $('#bagDiv').prepend('<img src="' + image + '" style="width:20%;">');
+        }
+    }
+}
 
 var myJsonStuff = {};
 var gotJSON = false;
@@ -220,28 +240,35 @@ function clickbutton (tagg){
                 console.log("true");
 
                 // load json file
-                //console.log(test);
                 if(gotJSON){
                     //do stuff
-                    console.log(myJsonStuff);
-                    var test = loadStuffs(tagg);
-                    console.log(test);
-                    $('#bagDiv').prepend(myJsonStuff);
+                    // console.log(myJsonStuff);
+                    var allItems = loadStuffs(tagg);
+                    // socket event to send stuffToPack data
+                    updateImages(stuffToPack);
+                    console.log(stuffToPack);
                 }
                 else{
                     console.log("json not loaded");
                 }
-                
-                // $('#bagDiv').prepend("." + tagg);
-            }
+
+            } 
         },
         function () {
 
-          $(this).css({"background-color":"black"});
-          purposes[tagg] = false;
-          //console.log( purposes['skiing']); // false
-          // $('.skiingThing').html('');
+            $(this).css({"background-color":"black"});
+            purposes[tagg] = false;
+            //console.log( purposes['skiing']); // false
+            //$('#bagDiv').html('');
+            //loadStuffs(tagg);
+
+            // remove from object if we clicked button again 
+            delete stuffToPack[tagg];
+            // socket event to send stuffToPack data
+            console.log(stuffToPack);
+            updateImages(stuffToPack);
     });
+
 }
 
 
@@ -265,7 +292,6 @@ $(document).ready(function(){
     });
 
     ////////// SECTION 1 //////////
-
     // when search button is pressed
     $('#searchWeather').click(function(){
         // empty the div first
@@ -279,48 +305,8 @@ $(document).ready(function(){
         getCurrentWeatherData(city);
     });
 
-
-    ////////// SECTION 2 //////////
-    // purposes tags 
-    // $("#business").toggle(
-    //     function () {
-    //         $(this).css({"background-color":"red"});
-    //         purposes['business'] = true;
-    //         //console.log( purposes['business']); // true
-    //         if(purposes['business'] == true) {
-    //             console.log("true");
-    //             // load json file
-    //             loadStuffs('business');
-    //             $('#bagDiv').prepend(businessThing);
-    //         }
-    //     },
-    //     function () {
-    //       $(this).css({"background-color":"black"});
-    //       purposes['business'] = false;
-    //       $('.businessThing').html('');
-
-    // });
-
-
-    // $("#swimming").toggle(
-    //     function () {
-    //         $(this).css({"background-color":"red"});
-    //         purposes['swimming'] = true;
-    //         //console.log( purposes['swimming']); // true
-    //         if(purposes['swimming'] == true) {
-    //             console.log("true");
-    //             // load json file
-    //             loadStuffs('swimming');
-    //             $('#bagDiv').prepend(swimmingThing);
-    //         }
-    //     },
-    //     function () {
-    //       $(this).css({"background-color":"black"});
-    //       purposes['swimming'] = false;
-    //       //console.log( purposes['swimming']); // false
-    //       $('.swimmingThing').html('');
-    // });
-    
+    ////////// SECTION 2 ////////// 
+    /// all the tags button    
     clickbutton('business');
     clickbutton('skiing');
     clickbutton('swimming');
