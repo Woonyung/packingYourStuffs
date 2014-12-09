@@ -53,10 +53,8 @@ io.sockets.on('connection',
 		            console.log("purpose in stuff: " + data[purpose][i].url);
 		        }
     		}
-    		// socket.broadcast.emit('stuffFromServer', data);
+    		//send the same list to all
     		io.sockets.emit('stuffFromServer', data);
-
-
 		});
 
 

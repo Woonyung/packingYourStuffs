@@ -25,23 +25,23 @@ var purposes = {
 var ourIcon = {
     '01d' : 'public/images/01d.png', 
     '02d' : 'public/images/02d.png',
-    '03d' : 'public/images/01d.png', 
-    '04d' : 'public/images/02d.png',
-    '09d' : 'public/images/01d.png', 
-    '10d' : 'public/images/02d.png',
-    '11d' : 'public/images/01d.png', 
-    '13d' : 'public/images/02d.png',
-    '50d' : 'public/images/02d.png',
+    '03d' : 'public/images/03d.png', 
+    '04d' : 'public/images/04d.png',
+    '09d' : 'public/images/09d.png', 
+    '10d' : 'public/images/10d.png',
+    '11d' : 'public/images/11d.png', 
+    '13d' : 'public/images/13d.png',
+    '50d' : 'public/images/50d.png',
 
     '01n' : 'public/images/01d.png', 
     '02n' : 'public/images/02d.png',
-    '03n' : 'public/images/01d.png', 
-    '04n' : 'public/images/02d.png',
-    '09n' : 'public/images/01d.png', 
-    '10n' : 'public/images/02d.png',
-    '11n' : 'public/images/01d.png', 
-    '13n' : 'public/images/02d.png',
-    '50n' : 'public/images/02d.png'
+    '03n' : 'public/images/03d.png', 
+    '04n' : 'public/images/04d.png',
+    '09n' : 'public/images/09d.png', 
+    '10n' : 'public/images/10d.png',
+    '11n' : 'public/images/11d.png', 
+    '13n' : 'public/images/13d.png',
+    '50n' : 'public/images/50d.png'
 };
 var iconImage;
 var stuff = '';
@@ -99,6 +99,13 @@ function getCurrentWeatherData(city){
 
                 var ourDate = month + ". " +date;
 
+                var dateString = '<div class="dateDiv"'+ 'id="'+ unixDate +'">' + '<span class="dates">' + ourDate + '</span>' + '</a>' + ' ' + '<br>'+
+                                   'max: ' + maxTemp + '<br>' +
+                                   ' min: ' + minTemp + ' ' + '<br>' +
+                                   iconImage + ' ' + '<br>' +
+                                   weather + ' ' + '<br>' +
+                                   stuff + '</div>';
+
                 ///// ICON ////
                 // looping through our icon object
                 for ( var key in ourIcon){
@@ -106,7 +113,7 @@ function getCurrentWeatherData(city){
                     // if icon id is matched, display with our icons
                     if ( key === iconID ){
                         //console.log("we have matched one");
-                        iconImage = '<img src="' + ourIcon[key] + '">';
+                        iconImage = '<img class="weather" src="' + ourIcon[key] + '">';
                     } 
                 }
 
@@ -124,18 +131,18 @@ function getCurrentWeatherData(city){
 
                 // append to the div
                 if ( i < 6 ){
-                    $('#dataPrint_top').append( '<div class="dateDiv"'+ 'id="'+ unixDate +'">' + ourDate + '</a>' + ' ' +
-                                        'max: ' + maxTemp + 
-                                        ' min: ' + minTemp + ' ' + 
-                                        iconImage + ' ' +
-                                        weather + ' ' + 
+                    $('#dataPrint_top').append( '<div class="dateDiv"'+ 'id="'+ unixDate +'">' + '<span class="dates">' + ourDate + '</span>' + '</a>' + ' ' + '<br>'+
+                                        'max: ' + maxTemp + '<br>' +
+                                        ' min: ' + minTemp + ' ' + '<br>' +
+                                        iconImage + ' ' + '<br>' +
+                                        weather + ' ' + '<br>' +
                                         stuff + '</div>');
                 } else {
-                    $('#dataPrint_bottom').append( '<div class="dateDiv"'+ 'id="'+ unixDate +'">' + ourDate + '</a>' + ' ' +
-                                        'max: ' + maxTemp + 
-                                        ' min: ' + minTemp + ' ' + 
-                                        iconImage + ' ' +
-                                        weather + ' ' + 
+                    $('#dataPrint_bottom').append( '<div class="dateDiv"'+ 'id="'+ unixDate +'">' + '<span class="dates">' + ourDate + '</span>' + '</a>' + ' ' + '<br>'+
+                                        'max: ' + maxTemp + '<br>' +
+                                        ' min: ' + minTemp + ' ' + '<br>' +
+                                        iconImage + ' ' + '<br>' +
+                                        weather + ' ' + '<br>' +
                                         stuff + '</div>');
                 }
             }
@@ -257,7 +264,7 @@ function clickbutton (tagg){
     console.log("click button function");
     $("#"+tagg).toggle(
         function () {
-            $(this).css({"background-color":"red"});
+            $(this).css({"background-color":"#FD706C"});
             purposes[tagg] = true;
             console.log( purposes[tagg]); // true
             if(purposes[tagg] == true) {

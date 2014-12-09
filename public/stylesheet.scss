@@ -1,5 +1,10 @@
 // this will be the variable for color
-$colorRed : #ff00ff;
+$bGreen : #98CDB4;
+$bYellow : #FEEDB0;
+$bRed : #FD706C;
+$bOrange: #FD9459;
+$bBlue: #8BE1D0;
+
 
 @mixin buttonTraits{
 	border: 0px solid #006;
@@ -8,6 +13,10 @@ $colorRed : #ff00ff;
 	-ms-border-radius: 5px;
 	-o-border-radius: 5px;
 	border-radius: 10px;
+
+	font-family: gotham-book;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
 }
 
 @mixin vertical-align {
@@ -19,29 +28,47 @@ $colorRed : #ff00ff;
 }
 
 
+
+/////////////////////////////////////////
+/* load the font face from local machine */
+@font-face {
+    font-family: gotham-book;
+    src: url(fonts/Gotham-Book.otf);
+}
+
+@font-face{
+	font-family: gotham-light;
+	src: url(fonts/Gotham-Light.otf);
+}
+
+@font-face{
+	font-family: gotham-thin;
+	src: url(fonts/Gotham-Thin.otf);
+}
+
 /*****************************************/
 body {
     width: 100%;
-    background-color: $colorRed;
     margin: 0;
 
+	font-family: gotham-light;
     font-size: 10px;
+    background-color: #E9E8E8;
 }
 
 
 /*****************************************/
 
 .main section.page1 {
-	background-color: aqua;
+
 }
 
 .main section.page2 {
-	background-color: pink;
+
 	height: 1300px;
 }
 
 .main section.page3 {
-	background-color: maroon;
 	height: 1300px;
 }
 
@@ -50,7 +77,7 @@ body {
 #wrapper1{
 	text-align: center;
 	@include vertical-align;
-	background-color: blue;
+
 }
 
 #inputData{
@@ -65,37 +92,51 @@ body {
 
 	#searchWeather{
 		@include buttonTraits;
-		background-color: red;
+		background-color: $bGreen;
 		width: 100px;
 		height: 40px;
 		color: white;
 	}
 
+.weather{
+	width: 40%;
+}
+
+.dates{
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	font-family: gotham-book;
+}
+
+// we need to figure it out - center align thing.. :(
 #dataPrint_wrap{
 	width: 60%;
 	margin: 0 auto;
-	background-color: green;
+	// background-color: red; 
 }
 
 .dateDiv{
-	background-color: magenta;
 	width: 100px;
 	float: left;
 
 	&:hover{
-		background-color: pink;
+		background-color: #FFFFFF;
 	}
 }
 
 
+#indication{
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.3em;
+}
+
 #dataPrint_top{
 	height: 100px;
-	background-color: black;
 }
 
 #dataPrint_bottom{
 	height: 100px;
-	background-color: yellow;
 }
 
 #countdown{
@@ -103,7 +144,6 @@ body {
 }
 
 #purpose{
-	background-color: red;
 }
 
 	.purposes{
@@ -112,7 +152,7 @@ body {
 		color: white;
 
 		&:hover{
-			background-color: blue;
+			background-color: $bRed;
 		}
 
 	}
@@ -121,13 +161,12 @@ body {
 #wrapper2{
 	margin-top: 40px;
 	margin-left: 100px;
-	background-color: blue;
 }
 
 #wrapperForButton{
-	background-color: red;	
 }
 
+/* buttons for page 2 */
 .buttons {
 	@include buttonTraits;
 	background-color: black;
@@ -141,9 +180,8 @@ body {
 #bagDiv{
 	width:55%;
 	height: 700px;
-	background-color: gray;
 
-	background-image: url("images/c_bag.png");
+	background-image: url("public/images/c_bag.png");
 	background-size: 95% 95%;
 	background-repeat: no-repeat;
 }
