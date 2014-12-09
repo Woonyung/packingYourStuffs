@@ -61,6 +61,17 @@ var stuffToPack = {};
     thunderstorm, drizzle, rain, snow, atmosphere (volcanic ashes, tornado), 
     clouds, extreme ( hail, tornado)
 */
+
+
+////////////////// SOCKET IO CLIENT SIDE ////////////////////
+// connects to the same page that the page was served from
+var socket = io();
+
+socket.on('connect', function(){
+    console.log("connected");
+});
+
+
 function getCurrentWeatherData(city){
     var myURL = 'http://api.openweathermap.org/data/2.5/forecast/daily?q='
                 + city + '&mode=json&units=metric&cnt=12';
@@ -216,7 +227,20 @@ function updateImages(stuffToPack){
             $('#bagDiv').prepend('<img src="public/' + image + '" style="width:20%;">');
         }
     }
+    // 
+    // get this from server
+
 }
+
+
+socket.on('stuffFromServer', function(stuffFromServer){
+        console.log("stuff from server: " + stuffFromServer);
+
+        //updateImages now
+        updateImages(stuffFromServer);
+        
+});
+
 
 var myJsonStuff = {};
 var gotJSON = false;
@@ -243,10 +267,12 @@ function clickbutton (tagg){
                 if(gotJSON){
                     //do stuff
                     // console.log(myJsonStuff);
-                    var allItems = loadStuffs(tagg);
+                    loadStuffs(tagg);
                     // socket event to send stuffToPack data
-                    updateImages(stuffToPack);
+                   // updateImages(stuffToPack);
                     console.log(stuffToPack);
+                    socket.emit('SendStuffToPack', stuffToPack);
+
                 }
                 else{
                     console.log("json not loaded");
@@ -266,7 +292,10 @@ function clickbutton (tagg){
             delete stuffToPack[tagg];
             // socket event to send stuffToPack data
             console.log(stuffToPack);
-            updateImages(stuffToPack);
+           // updateImages(stuffToPack);
+
+            socket.emit('SendStuffToPack', stuffToPack);
+
     });
 
 }

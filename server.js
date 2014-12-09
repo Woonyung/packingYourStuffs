@@ -1,9 +1,10 @@
 var express = require ('express');
 var http = require('http');
-
 var app = express();
+
 var server = http.createServer(app).listen(8000);
 console.log("listening 8000");
+
 var io = require('socket.io').listen(server);  // Your app passed to socket.io
 
 
@@ -19,6 +20,7 @@ app.get('/', function(req, res){
   res.render('index');
 });
 
+////// SOCKETS //////
 // array of all the people connected
 var connectedSockets = [];
 
@@ -43,6 +45,21 @@ io.sockets.on('connection',
 		});
 		
 		
+		socket.on('SendStuffToPack', function(data){
+			console.log("stuff from client: " + data);
+			//checking, it works
+			for ( var purpose in data){
+		        for ( var i = 0; i < data[purpose].length; i++){
+		            console.log("purpose in stuff: " + data[purpose][i].url);
+		        }
+    		}
+    		// socket.broadcast.emit('stuffFromServer', data);
+    		io.sockets.emit('stuffFromServer', data);
+
+
+		});
+
+
 		socket.on('disconnect', function() {
 			console.log("Client has disconnected " + socket.id);
 			var indexToRemove = connectedSockets.indexOf(socket);
