@@ -1,0 +1,152 @@
+/*****************************************/
+body {
+  width: 100%;
+  background-color: magenta;
+  margin: 0;
+  font-size: 10px;
+}
+
+/*****************************************/
+.main section.page1 {
+  background-color: aqua;
+}
+
+.main section.page2 {
+  background-color: pink;
+  height: 1300px;
+}
+
+.main section.page3 {
+  background-color: maroon;
+  height: 1300px;
+}
+
+/*****************************************/
+#wrapper1 {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background-color: blue;
+}
+
+#inputData {
+  height: 40px;
+}
+
+#city {
+  border: 0px solid #006;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 10px;
+  width: 300px;
+  height: 38px;
+}
+
+#searchWeather {
+  border: 0px solid #006;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 10px;
+  background-color: red;
+  width: 100px;
+  height: 40px;
+  color: white;
+}
+
+#dataPrint_wrap {
+  width: 60%;
+  margin: 0 auto;
+  background-color: green;
+}
+
+.dateDiv {
+  background-color: magenta;
+  width: 100px;
+  float: left;
+}
+.dateDiv:hover {
+  background-color: pink;
+}
+
+#dataPrint_top {
+  height: 100px;
+  background-color: black;
+}
+
+#dataPrint_bottom {
+  height: 100px;
+  background-color: yellow;
+}
+
+#countdown {
+  font-size: 18px;
+}
+
+#purpose {
+  background-color: red;
+}
+
+.purposes {
+  border: 0px solid #006;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+}
+.purposes:hover {
+  background-color: blue;
+}
+
+/******************** PAGE 2 *********************/
+#wrapper2 {
+  margin-top: 40px;
+  margin-left: 100px;
+  background-color: blue;
+}
+
+#wrapperForButton {
+  background-color: red;
+}
+
+.buttons {
+  border: 0px solid #006;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+}
+.buttons:hover {
+  background: blue;
+}
+
+#bagDiv {
+  width: 55%;
+  height: 700px;
+  background-color: gray;
+  background-image: url("images/c_bag.png");
+  background-size: 95% 95%;
+  background-repeat: no-repeat;
+}
+
+#bag {
+  width: 100%;
+}
+
+.objects {
+  margin-top: 10px;
+  position: absolute;
+  z-index: 3;
+}
