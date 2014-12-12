@@ -215,8 +215,9 @@ function loadStuffs(purposes){
     return stuffToPack;
 }
 
-var arrayForImages = [];
+var arrayForImages;
 function updateImages(stuffToPack){
+    arrayForImages = [];
     console.log(stuffToPack);
     console.log("showing images function");
     // first, clear the div
@@ -224,27 +225,26 @@ function updateImages(stuffToPack){
     for ( var purpose in stuffToPack){
         // for ( var i = 0; i < stuffToPack[purpose].length; i++){
 
-        for ( var item in stuffToPack[purpose]){
-            //filter the array
-            
+        for ( var item in stuffToPack[purpose]){            
             var image = stuffToPack[purpose][item].url;
 
-            // // get rid of duplicated one and put it into array
-            // arrayForImages.push(image);
-            // var imageURL = _.uniq(arrayForImages); 
-
-            // console.log(imageURL);
-
-            // we'll keep this because we spent 20min :) 
-            var regex1 =/(images\/|\/.png)/gi; 
-            var regex2 = /\.png/gi;
-            var id = (image.split(regex1)[2]).split(regex2)[0];
-
-            $('#bagDiv').prepend('<img style="width:20px;" class="items" id="' + id + '" src="public/' + image + '">');
-            
+            // get rid of duplicated one and put it into imageURL array
+            arrayForImages.push(image);
+            var imageURL = _.uniq(arrayForImages);
 
         }
     }
+
+    // loop through imageURL array and append to the #bagDiv so that it has only one image
+    for ( var i = 0; i < imageURL.length; i++){
+        // we'll keep this because we spent 20min :) 
+        var regex1 =/(images\/|\/.png)/gi; 
+        var regex2 = /\.png/gi;
+        var id = (imageURL[i].split(regex1)[2]).split(regex2)[0];
+
+        $('#bagDiv').prepend('<img style="width:20px;" class="items" id="' + id + '" src="public/' + imageURL[i] + '">');
+    }
+    
 
     // draggable?
     // $('.items').draggable();
