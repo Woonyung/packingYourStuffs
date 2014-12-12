@@ -2,14 +2,9 @@ var express = require ('express');
 var http = require('http');
 var app = express();
 
-var server = http.createServer(app).listen(8000);
-console.log("listening 8000");
-
-var io = require('socket.io').listen(server);  // Your app passed to socket.io
-
-
+app.set('port', process.env.PORT || 5000);
 // serve the public folder
-app.use('/public', express.static('public')); 
+app.use('/public', express.static('public')); 	
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
@@ -19,6 +14,10 @@ app.get('/', function(req, res){
 app.get('/', function(req, res){
   res.render('index');
 });
+
+var server = http.createServer(app);
+
+var io = require('socket.io')(server);  // Your app passed to socket.io
 
 ////// SOCKETS //////
 // array of all the people connected
@@ -66,3 +65,7 @@ io.sockets.on('connection',
 		});
 	}
 );
+
+server.listen(app.get('port'), function(){
+	console.log('express server listening on port ' + app.get('port'));
+})
