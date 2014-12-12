@@ -49,12 +49,6 @@ var stuff = '';
 // empty array for holding all the items that matches to the tags
 var stuffToPack = {};
 
-// // //////////// temporary thing
-// var businessThing = "<div class='objects businessThing'><img id='folder' src='images/folder.png'></div>";
-// var swimmingThing = "<div class='objects swimmingThing' ><img id='bikini' src='images/bikini.png'></div>";
-// var skiingThing = "<div class='objects skiingThing'><img id='hat' src='images/hat.png'></div>";
-// // ///////////
-
 
 /*
     possible weathers:
@@ -211,7 +205,7 @@ function loadStuffs(purposes){
              stuffToPack[purposes].push(myJsonStuff[item]);        
         }
     }
-    console.log(stuffToPack);
+    // console.log(stuffToPack);
     // for ( var purpose in stuffToPack){
     //     for ( var i = 0; i < stuffToPack[purpose].length; i++){
     //         console.log(stuffToPack[purpose][i].url);
@@ -229,12 +223,51 @@ function updateImages(stuffToPack){
     $('#bagDiv').empty();
     for ( var purpose in stuffToPack){
         for ( var i = 0; i < stuffToPack[purpose].length; i++){
-            console.log(stuffToPack[purpose][i].url);
+            // console.log(stuffToPack[purpose][i].url);
+            
+            // getting name of items
             var image = stuffToPack[purpose][i].url;
-            $('#bagDiv').prepend('<img src="public/' + image + '" style="width:20%;">');
+
+            var regex1 =/(images\/|\/.png)/gi; 
+            var regex2 = /\.png/gi;
+            var id = (image.split(regex1)[2]).split(regex2)[0];
+
+            // console.log(id);
+            $('#bagDiv').prepend('<img class="items" id="' + id + '" src="public/' + image + '" style="width:20%;">');
         }
     }
-    // 
+    // draggable?
+    // $('.items').draggable();
+    $(".items").draggable({ revert: "invalid"})
+        .on("mousedown", function (event) {
+            $(".items").droppable('enable');
+    });
+
+    $( "#bagDiv" ).droppable({
+        hoverClass: "over",
+        drop: function( event, ui ) {
+        $( this )
+          .css( "background-color", 'red' );
+        }
+    });
+    $( "#recyclingBin" ).droppable({
+        hoverClass: "over",
+        drop: function( event, ui ) {
+        $( this )
+          .css( "background-color", 'yellow' );
+
+          // **** how can we grab id that we are clicking right now??
+          var idToRemove = ui.draggable.context.id;
+          $('#' + idToRemove).fadeOut();
+          // remove idToRemove from stuffToPack]
+          console.log(stuffToPack);
+          //delete stuffToPack[tagg][idToRemove];
+          //socket.emit('SendStuffToPack', stuffToPack);
+          //$('.items').css('visibility', 'hidden');
+        }
+
+    });
+ 
     // get this from server
 
 }
@@ -346,6 +379,7 @@ $(document).ready(function(){
     clickbutton('business');
     clickbutton('skiing');
     clickbutton('swimming');
+
 
 
 });

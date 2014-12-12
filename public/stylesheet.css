@@ -167,8 +167,9 @@ body {
   width: 100%;
 }
 
-.objects {
-  margin-top: 10px;
-  position: absolute;
-  z-index: 3;
+#recyclingBin {
+  width: 100px;
+  height: 100px;
+  float: right;
+  background-color: magenta;
 }

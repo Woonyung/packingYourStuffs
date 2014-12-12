@@ -181,7 +181,7 @@ body {
 	width:55%;
 	height: 700px;
 
-	background-image: url("public/images/c_bag.png");
+	background-image: url("images/c_bag.png");
 	background-size: 95% 95%;
 	background-repeat: no-repeat;
 }
@@ -190,8 +190,9 @@ body {
 	width: 100%;
 }
 
-.objects{
-	margin-top: 10px;
-	position: absolute;
-	z-index: 3;
+#recyclingBin{
+	width: 100px;
+	height: 100px;
+	float: right;
+	background-color: magenta;
 }
