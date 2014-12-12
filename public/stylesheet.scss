@@ -191,8 +191,18 @@ body {
 }
 
 #recyclingBin{
-	width: 100px;
-	height: 100px;
+	width: 300px;
+	height: 600px;
 	float: right;
 	background-color: magenta;
+}
+
+/**************************************************/
+/** items */
+#utensils{
+	width: 15%;
+}
+
+#raincoat{
+	width: 40%;
 }

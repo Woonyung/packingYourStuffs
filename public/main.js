@@ -68,7 +68,7 @@ socket.on('connect', function(){
 
 function getCurrentWeatherData(city){
     var myURL = 'http://api.openweathermap.org/data/2.5/forecast/daily?q='
-                + city + '&mode=json&units=metric&cnt=12';
+                + city + '&mode=json&units=imperial&cnt=12';
     $.ajax({
         url: myURL,
         type: 'GET',
@@ -192,50 +192,60 @@ function getCurrentWeatherData(city){
 
 
 function loadStuffs(purposes){
-    // console.log("i am in loadStuff :" + myJsonStuff);
+    // console.log(myJsonStuff);
   
-    stuffToPack[purposes] = [];
+    // stuffToPack[purposes] = [];
+    stuffToPack[purposes] = {};
+
 
     // looping through all stuffs
     for ( var item in myJsonStuff){
-        // console.log(item); // name
+        // console.log(item); // utencil, raincoats
+        var itemName = item;
 
         // if tags are matched with purposes  
         if ( _.contains(myJsonStuff[item].tags, purposes)) {
-             stuffToPack[purposes].push(myJsonStuff[item]);        
+            console.log(itemName);
+            //stuffToPack[purposes].push(myJsonStuff[item]); 
+            stuffToPack[purposes][itemName] = myJsonStuff[item]; 
+            console.log(stuffToPack); 
         }
     }
-    // console.log(stuffToPack);
-    // for ( var purpose in stuffToPack){
-    //     for ( var i = 0; i < stuffToPack[purpose].length; i++){
-    //         console.log(stuffToPack[purpose][i].url);
-    //         var image = stuffToPack[purpose][i].url;
-    //         $('#bagDiv').prepend('<img src="' + image + '">');
-    //     }
-    // }
 
     return stuffToPack;
 }
 
+var arrayForImages = [];
 function updateImages(stuffToPack){
+    console.log(stuffToPack);
     console.log("showing images function");
     // first, clear the div
     $('#bagDiv').empty();
     for ( var purpose in stuffToPack){
-        for ( var i = 0; i < stuffToPack[purpose].length; i++){
-            // console.log(stuffToPack[purpose][i].url);
-            
-            // getting name of items
-            var image = stuffToPack[purpose][i].url;
+        // for ( var i = 0; i < stuffToPack[purpose].length; i++){
 
+        for ( var item in stuffToPack[purpose]){
+            //filter the array
+            
+            var image = stuffToPack[purpose][item].url;
+
+            // // get rid of duplicated one and put it into array
+            // arrayForImages.push(image);
+            // var imageURL = _.uniq(arrayForImages); 
+
+            // console.log(imageURL);
+
+            // we'll keep this because we spent 20min :) 
             var regex1 =/(images\/|\/.png)/gi; 
             var regex2 = /\.png/gi;
             var id = (image.split(regex1)[2]).split(regex2)[0];
 
-            // console.log(id);
-            $('#bagDiv').prepend('<img class="items" id="' + id + '" src="public/' + image + '" style="width:20%;">');
+            $('#bagDiv').prepend('<img style="width:20px;" class="items" id="' + id + '" src="public/' + image + '">');
+            
+
         }
     }
+
     // draggable?
     // $('.items').draggable();
     $(".items").draggable({ revert: "invalid"})
@@ -274,7 +284,7 @@ function updateImages(stuffToPack){
 
 
 socket.on('stuffFromServer', function(stuffFromServer){
-        console.log("stuff from server: " + stuffFromServer);
+        // console.log("stuff from server: " + stuffFromServer);
 
         //updateImages now
         updateImages(stuffFromServer);
@@ -312,7 +322,6 @@ function clickbutton (tagg){
                    // updateImages(stuffToPack);
                     console.log(stuffToPack);
                     socket.emit('SendStuffToPack', stuffToPack);
-
                 }
                 else{
                     console.log("json not loaded");
@@ -364,7 +373,8 @@ $(document).ready(function(){
     // when search button is pressed
     $('#searchWeather').click(function(){
         // empty the div first
-        $('#dataPrint').html('');
+        $('#dataPrint_top').html('');
+        $('#dataPrint_bottom').html('');
 
         // get the city value from inputs
         var city = $('#city').val();

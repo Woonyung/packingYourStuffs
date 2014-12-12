@@ -46,6 +46,7 @@ io.sockets.on('connection',
 		
 		socket.on('SendStuffToPack', function(data){
 			console.log("stuff from client: " + data);
+			console.log(data);
 			//checking, it works
 			for ( var purpose in data){
 		        for ( var i = 0; i < data[purpose].length; i++){

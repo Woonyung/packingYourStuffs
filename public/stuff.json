@@ -1,48 +1,39 @@
 {
-    "bikini": {
+    "airpillow": {
+        "name": "airpillow", 
         "tags": ["swimming"],
         "weather": ["sunny"],
-        "url": "images/bikini.png"
+        "url": "images/airpillow.png"
     },
-    "folder": {
+    "blanket": {
+        "name": "blanket", 
         "tags": ["business"],
         "weather": [],
-        "url": "images/folder.png"
+        "url": "images/blanket.png"
     },
-    "goggle": {
+    "flashlight": {
+        "name": "flashlight", 
         "tags": ["skiing"],
         "weather": ["snow"],
-        "url": "images/goggle.png"
+        "url": "images/flashlight.png"
     },
-    "hat": {
+    "lighter": {
+        "name": "lighter", 
         "tags": ["skiing"],
         "weather": ["snow"],
-        "url": "images/hat.png"
+        "url": "images/lighter.png"
     },
-    "laptop": {
+    "raincoat": {
+        "name": "raincoat", 
         "tags": ["skiing", "business"],
         "weather": [],
-        "url": "images/laptop.png"
+        "url": "images/raincoat.png"
     },
-    "pen": {
+    "utensils": {
+        "name": "utensils", 
         "tags": ["business"],
         "weather": [],
-        "url": "images/pen.png"
-    },
-    "skies": {
-        "tags": ["skiing"],
-        "weather": ["snow"],
-        "url": "images/skies.png"
-    },
-    "sunblock": {
-        "tags": ["swimming", "business"],
-        "weather": ["sunny"],
-        "url": "images/sunblock.png"
-    },
-    "sunglasses": {
-        "tags": ["swimming", "business"],
-        "weather": ["sunny"],
-        "url": "images/sunglasses.png"
+        "url": "images/utensils.png"
     }
 
 }
