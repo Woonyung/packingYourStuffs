@@ -1,3 +1,26 @@
+.button {
+  border-top: 1px solid #000333;
+  background: #000333;
+  padding: 7px 14px;
+  -webkit-box-shadow: black 0 1px 0;
+  -moz-box-shadow: black 0 1px 0;
+  box-shadow: black 0 1px 0;
+  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
+  color: #ffffff;
+  vertical-align: middle;
+}
+
+.button:hover {
+  border-top-color: #4f84a8;
+  background: #4f84a8;
+  color: #ffffff;
+}
+
+.button:active {
+  border-top-color: #1b435e;
+  background: #1b435e;
+}
+
 /* load the font face from local machine */
 @font-face {
   font-family: gotham-book;
@@ -45,7 +68,7 @@ body {
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-family: gotham-book;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -59,7 +82,7 @@ body {
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-family: gotham-book;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -116,7 +139,7 @@ body {
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-family: gotham-book;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -140,7 +163,7 @@ body {
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-family: gotham-book;
   text-transform: uppercase;
   letter-spacing: 0.2em;

@@ -8,7 +8,6 @@ var app = express();
 var mongoose = require('mongoose'); // mongodb
 var Trip = require("./models/model.js"); //db model, can access like Model.Trip
 
-
 app.configure(function(){
 
   // server port number
@@ -47,7 +46,18 @@ app.get('/:slug',function(req,res){
 	console.log(slugToSearch);
 	Trip.findOne({slug:slugToSearch},function(err,response){
 		console.log('found the trip! >>' +response);
-		res.render('index.html');
+		var dataToRender = {slug:response.slug};
+		res.render('index.html',dataToRender);
+	})
+})
+
+app.get('/api/trip/:slug',function(req,res){
+	var slugToSearch = req.param('slug');
+	console.log(slugToSearch);
+	Trip.findOne({slug:slugToSearch},function(err,response){
+		console.log('found the trip! >>' +response);
+		var jsonData = response.stuffToPack;
+		res.json(jsonData);
 	})
 })
 
@@ -106,6 +116,16 @@ io.sockets.on('connection',
 				else console.log('data saved! >> ' + response);
 			})
 		});
+
+		socket.on('updateData',function(data){
+			console.log("update data "+ data);
+			var dataToUpdate = {stuffToPack: data.stuffToPack}
+
+			Trip.findOneAndUpdate({slug:data.slug},dataToUpdate,function(err,response){
+				if(err) console.log('we have an error ' + err);
+				else console.log('data updated! >> ' + response);
+			})
+		});		
 
 		socket.on('disconnect', function() {
 			console.log("Client has disconnected " + socket.id);

@@ -62,7 +62,7 @@ var stuffToPack = {};
 var socket = io();
 
 socket.on('connect', function(){
-    console.log("connected");
+    console.log("connected");    
 });
 
 
@@ -190,6 +190,29 @@ function getCurrentWeatherData(city){
     });
 }
 
+function getExistingData(){
+    // first, need to see if it is an existing trip
+    // we will check to see if a div with ID "slug" exists
+    var slugDiv = document.getElementById('slug');
+    if(slugDiv == null) return; // nothing to see here
+    else{
+        // let's get the data!
+        var slug = slugDiv.getAttribute('data-slug');
+        $.ajax({
+            type: "GET",
+            url: "/api/trip/"+slug,
+            dataType: "json",
+            success: function(response){
+                stuffToPack = response;
+                updateImages(stuffToPack);
+            },
+            failure: function(err){
+                console.log(err)
+            }
+        })
+        
+    }
+}
 
 function loadStuffs(purposes){
     // console.log(myJsonStuff);
@@ -220,6 +243,8 @@ function updateImages(stuffToPack){
     arrayForImages = [];
     console.log(stuffToPack);
     console.log("showing images function");
+    // need to update buttons
+    
     // first, clear the div
     $('#bagDiv').empty();
     for ( var purpose in stuffToPack){
@@ -288,7 +313,21 @@ function updateImages(stuffToPack){
     //when save button is clicked, call event to save to db
     $('#save').click(function(){
         console.log('saving to db! >> ' + stuffToPack);
-        socket.emit('saveData', stuffToPack);            
+
+        var slugDiv = document.getElementById('slug');
+        if(slugDiv == null){
+            // slug doesn't exist, so we need to save it
+            socket.emit('saveData',stuffToPack);
+        }
+        else{
+            // it exists already, so update it
+            var slug = slugDiv.getAttribute('data-slug');
+            var dataToUpdate = {
+                slug: slug,
+                stuffToPack: stuffToPack
+            }
+            socket.emit('updateData', dataToUpdate);  
+        }          
     });
 
     socket.on('stuffFromServer', function(stuffFromServer){
@@ -359,6 +398,10 @@ function clickbutton (tagg){
 
 
 $(document).ready(function(){
+
+    //see if it an existing trip and get data
+    getExistingData();
+
     $.getJSON( "public/stuff.json", dealWithResults);
 
     // scroll library <3
