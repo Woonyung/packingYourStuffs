@@ -355,8 +355,15 @@ function clickbutton (tagg){
 }
 
 
-$(document).ready(function(){
+// (function conveyorLoop() {
+//     console.log("animate start");
+//     $('#bigCloud').animate({
+//         'background-position': '+=102'
+//     }, 8000, 'linear', conveyorLoop);
+// }());
 
+
+$(document).ready(function(){
     $.getJSON( "public/stuff.json", dealWithResults);
 
     // scroll library <3
@@ -394,6 +401,5 @@ $(document).ready(function(){
     clickbutton('business');
     clickbutton('skiing');
     clickbutton('swimming');
-
 
 });

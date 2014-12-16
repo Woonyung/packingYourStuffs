@@ -9,17 +9,29 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         
-        <link href='public/onepage-scroll.css' rel='stylesheet' type='text/css'>
+        <link rel='stylesheet' type='text/css' href='public/css/onepage-scroll.css'>
 
         <!-- stylesheet -->
-        <link rel="stylesheet" type="text/css" href="public/stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="public/css/stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="public/css/animation.css">
 
     </head>
     
     <body>
         <div class="main">
-            <!-- weather -->
             <section class="page1">
+                
+                <img id="airballoon" src="public/images/illust_01/airbloon.png">
+                <img id="car" src="public/images/illust_01/car_01_1.gif">
+
+                <div id="background1">
+                    <div id="blank"></div>
+                    <div id="bigCloud"></div>
+                </div>
+
+            </section>
+            <!-- weather -->
+            <section class="page2">
                 <div id="wrapper1">
                     <div id="inputData">
                         <input type="text" id="city" placeholder="city">
@@ -50,7 +62,7 @@
             </section>
 
             
-            <section class="page2">
+            <section class="page3">
 
                 <div id="purposes">
                     <button class="purposes" id="business">business</button>
@@ -72,7 +84,7 @@
             </section>
 
 
-            <section class="page3">
+            <section class="page4">
                 Done by Neva and Woon with Love &#60;3
             </section>
 
@@ -85,9 +97,9 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 
     <!-- onepage scroll -->
-    <script type="text/javascript" src="public/jquery.onepage-scroll.js"></script>
+    <script type="text/javascript" src="public/js/jquery.onepage-scroll.js"></script>
 
     <!-- socket.io -->
     <script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>        
-    <script src="public/main.js"></script>
+    <script src="public/js/main.js"></script>
 </html>
