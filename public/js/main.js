@@ -268,7 +268,6 @@ function updateImages(stuffToPack){
         var regex2 = /\.png/gi;
         var id = (imageURL[i].split(regex1)[2]).split(regex2)[0];
         console.log(imageURL[i]);
-        console.log(id);
 
         $('#bagDiv').prepend('<img style="width:20px;" class="items" id="' + id + '" src="' + imageURL[i] + '">');
     }
@@ -402,7 +401,7 @@ $(document).ready(function(){
     //see if it an existing trip and get data
     getExistingData();
 
-    $.getJSON( "public/stuff.json", dealWithResults);
+    $.getJSON( "public/js/stuff.json", dealWithResults);
 
     // scroll library <3
     $(".main").onepage_scroll({
