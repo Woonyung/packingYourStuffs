@@ -23,26 +23,26 @@ var purposes = {
 
 
 var ourIcon = {
-    '01d' : 'public/images/01d.png', 
-    '02d' : 'public/images/02d.png',
-    '03d' : 'public/images/03d.png', 
-    '04d' : 'public/images/04d.png',
-    '09d' : 'public/images/09d.png', 
-    '10d' : 'public/images/10d.png',
-    '11d' : 'public/images/11d.png', 
-    '13d' : 'public/images/13d.png',
-    '50d' : 'public/images/50d.png',
+    '01d' : 'public/images/weather/01d.png', 
+    '02d' : 'public/images/weather/02d.png',
+    '03d' : 'public/images/weather/03d.png', 
+    '04d' : 'public/images/weather/04d.png',
+    '09d' : 'public/images/weather/09d.png', 
+    '10d' : 'public/images/weather/10d.png',
+    '11d' : 'public/images/weather/11d.png', 
+    '13d' : 'public/images/weather/13d.png',
+    '50d' : 'public/images/weather/50d.png',
 
-    '01n' : 'public/images/01d.png', 
-    '02n' : 'public/images/02d.png',
-    '03n' : 'public/images/03d.png', 
-    '04n' : 'public/images/04d.png',
-    '09n' : 'public/images/09d.png', 
-    '10n' : 'public/images/10d.png',
-    '11n' : 'public/images/11d.png', 
-    '13n' : 'public/images/13d.png',
-    '50n' : 'public/images/50d.png'
-};
+    '01n' : 'public/images/weather/01d.png', 
+    '02n' : 'public/images/weather/02d.png',
+    '03n' : 'public/images/weather/03d.png', 
+    '04n' : 'public/images/weather/04d.png',
+    '09n' : 'public/images/weather/09d.png', 
+    '10n' : 'public/images/weather/10d.png',
+    '11n' : 'public/images/weather/11d.png', 
+    '13n' : 'public/images/weather/13d.png',
+    '50n' : 'public/images/weather/50d.png'
+}
 var iconImage;
 var stuff = '';
 

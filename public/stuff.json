@@ -3,37 +3,37 @@
         "name": "airpillow", 
         "tags": ["swimming"],
         "weather": ["sunny"],
-        "url": "images/airpillow.png"
+        "url": "images/objects/airpillow.png"
     },
     "blanket": {
         "name": "blanket", 
         "tags": ["business"],
         "weather": [],
-        "url": "images/blanket.png"
+        "url": "images/objects/blanket.png"
     },
     "flashlight": {
         "name": "flashlight", 
         "tags": ["skiing"],
         "weather": ["snow"],
-        "url": "images/flashlight.png"
+        "url": "images/objects/flashlight.png"
     },
     "lighter": {
         "name": "lighter", 
         "tags": ["skiing"],
         "weather": ["snow"],
-        "url": "images/lighter.png"
+        "url": "images/objects/lighter.png"
     },
     "raincoat": {
         "name": "raincoat", 
         "tags": ["skiing", "business"],
         "weather": [],
-        "url": "images/raincoat.png"
+        "url": "images/objects/raincoat.png"
     },
     "utensils": {
         "name": "utensils", 
         "tags": ["business"],
         "weather": [],
-        "url": "images/utensils.png"
+        "url": "images/objects/utensils.png"
     }
 
 }
