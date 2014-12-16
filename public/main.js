@@ -282,6 +282,11 @@ function updateImages(stuffToPack){
 
 }
 
+    //when save button is clicked, call event to save to db
+    $('#save').click(function(){
+        console.log('saving to db! >> ' + stuffToPack);
+        socket.emit('saveData', stuffToPack);            
+    });
 
 socket.on('stuffFromServer', function(stuffFromServer){
         // console.log("stuff from server: " + stuffFromServer);
@@ -389,7 +394,6 @@ $(document).ready(function(){
     clickbutton('business');
     clickbutton('skiing');
     clickbutton('swimming');
-
 
 
 });

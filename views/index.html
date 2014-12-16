@@ -1,0 +1,93 @@
+<!-- drawing D3 -->
+<!-- location of ISS -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        
+        <link href='public/onepage-scroll.css' rel='stylesheet' type='text/css'>
+
+        <!-- stylesheet -->
+        <link rel="stylesheet" type="text/css" href="public/stylesheet.css">
+
+    </head>
+    
+    <body>
+        <div class="main">
+            <!-- weather -->
+            <section class="page1">
+                <div id="wrapper1">
+                    <div id="inputData">
+                        <input type="text" id="city" placeholder="city">
+                        <button id="searchWeather">SEARCH</button>
+                    </div>
+                    
+                    <br>
+                    <br>
+                    <br>
+
+                    <div id="dataPrint_wrap">
+                        <span id="indication">select the date you are going to travel</span>
+                        <br>
+                        <br>
+                        <br>
+                        <div id="dataPrint_top"></div>
+                        
+                        <div id="dataPrint_bottom"></div>
+                    </div>
+                    <br>
+                    <br>
+                    <div id="countdown"></div>
+
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </section>
+
+            
+            <section class="page2">
+
+                <div id="purposes">
+                    <button class="purposes" id="business">business</button>
+                    <button class="purposes" id="skiing">skiing</button>
+                    <button class="purposes" id="swimming">swimming</button>
+                </div>
+                <div id="wrapper2">
+                    <div id="wrapperForButton">
+                        <button class="buttons" id="add">+</button>
+                        <button class="buttons" id="clear">clear bag</button>
+                        <button class="buttons" id="save">save</button>
+                        <button class="buttons" id="print">print</button>
+                    </div>
+
+                    <div id="recyclingBin"></div>
+                    <div id="bagDiv"></div>
+
+                </div>
+            </section>
+
+
+            <section class="page3">
+                Done by Neva and Woon with Love &#60;3
+            </section>
+
+        </div> <!-- main -->
+    </body>
+
+    <!-- scripts -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+    <!-- onepage scroll -->
+    <script type="text/javascript" src="public/jquery.onepage-scroll.js"></script>
+
+    <!-- socket.io -->
+    <script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>        
+    <script src="public/main.js"></script>
+</html>

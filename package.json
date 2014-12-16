@@ -4,9 +4,11 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
-    "express": "~4.10.4",
+    "express": "3.0.0rc5",
     "express3-handlebars": "~0.5.2",
-    "socket.io": "^1.2.1"
+    "socket.io": "^1.2.1",
+    "mongoose": "3.8.4",
+    "hogan-express": "0.3.3"
   },
   "devDependencies": {},
   "scripts": {
