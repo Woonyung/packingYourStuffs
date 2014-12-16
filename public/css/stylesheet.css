@@ -154,7 +154,7 @@ body {
 #bagDiv {
   width: 55%;
   height: 700px;
-  background-image: url("images/c_bag.png");
+  background-image: url("../images/objects/c_bag.png");
   background-size: 95% 95%;
   background-repeat: no-repeat;
 }

@@ -238,11 +238,14 @@ function updateImages(stuffToPack){
     // loop through imageURL array and append to the #bagDiv so that it has only one image
     for ( var i = 0; i < imageURL.length; i++){
         // we'll keep this because we spent 20min :) 
-        var regex1 =/(images\/|\/.png)/gi; 
+        // var regex1 =/(images\/|\/.png)/gi; 
+        var regex1 = /(images\/\objects\/|\/.png)/gi;
         var regex2 = /\.png/gi;
         var id = (imageURL[i].split(regex1)[2]).split(regex2)[0];
+        console.log(imageURL[i]);
+        console.log(id);
 
-        $('#bagDiv').prepend('<img style="width:20px;" class="items" id="' + id + '" src="public/' + imageURL[i] + '">');
+        $('#bagDiv').prepend('<img style="width:20px;" class="items" id="' + id + '" src="' + imageURL[i] + '">');
     }
     
 
@@ -288,7 +291,7 @@ function updateImages(stuffToPack){
         socket.emit('saveData', stuffToPack);            
     });
 
-socket.on('stuffFromServer', function(stuffFromServer){
+    socket.on('stuffFromServer', function(stuffFromServer){
         // console.log("stuff from server: " + stuffFromServer);
 
         //updateImages now
@@ -353,14 +356,6 @@ function clickbutton (tagg){
     });
 
 }
-
-
-// (function conveyorLoop() {
-//     console.log("animate start");
-//     $('#bigCloud').animate({
-//         'background-position': '+=102'
-//     }, 8000, 'linear', conveyorLoop);
-// }());
 
 
 $(document).ready(function(){

@@ -13,7 +13,7 @@
   bottom: 0;
   /*width:13%;*/
   height: 100%;
-  background: url("images/illust_01/background_1.png");
+  background: url("../images/illust_01/background_1.png");
   background-size: 100% 100%;
   background-repeat: repeat-x;
   -webkit-animation: slide 10s linear infinite;
@@ -37,7 +37,7 @@
 #bigCloud {
   z-index: 40;
   height: 15%;
-  background: url("images/illust_01/cloud.png");
+  background: url("../images/illust_01/cloud.png");
   background-size: 100% 100%;
   background-repeat: repeat-x;
   background-position: bottom;
