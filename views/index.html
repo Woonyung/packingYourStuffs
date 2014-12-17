@@ -20,11 +20,16 @@
     <body>
         <div class="main">
             <section class="page1">
+                <!-- give us little margin --> 
+                
+                <div id="titleDiv">
+                    <img id="title" src="public/images/UI/title_01.png">
+                </div>
                 
                 <img id="birds1" class="birds_a" src="public/images/illust_01/birds_01.png">
                 <img id="birds2" class="birds_a" src="public/images/illust_01/birds_02.png">
 
-                <img id="girl" src="public/images/illust_01/girl.png">
+                <img id="girl" src="public/images/illust_01/girl.gif">
                 <img id="airplane" src="public/images/illust_01/airplane.png">
                 <img id="car" src="public/images/illust_01/car_01_1.gif">
 
@@ -45,12 +50,26 @@
             </section>
             <!-- weather -->
             <section class="page2">
+                <div id="opaque"></div>
+                <img id="train" class='illustration' src="public/images/illust_02/train_01.png">
+                <div id="scenery" class='illustration'></div>
+                
                 <div id="wrapper1">
                     <div id="inputData">
-                        <input type="text" id="city" placeholder="city">
+                        <div id="littleMargin"></div>
+                        <input type="text" id="city" placeholder="where you want to go?">
                         <button id="searchWeather">SEARCH</button>
                     </div>
                     
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <br>
                     <br>
                     <br>
@@ -68,32 +87,50 @@
                     <br>
                     <div id="countdown"></div>
 
-                    <br>
-                    <br>
-                    <br>
                 </div>
+
             </section>
 
             
             <section class="page3">
 
-                <div id="purposes">
-                    <button class="purposes" id="business">business</button>
-                    <button class="purposes" id="skiing">skiing</button>
-                    <button class="purposes" id="swimming">swimming</button>
-                </div>
+
+
                 <div id="wrapper2">
+                
                     <div id="wrapperForButton">
                         <button class="buttons" id="add">+</button>
                         <button class="buttons" id="clear">clear bag</button>
                         <button class="buttons" id="save">save</button>
                         <button class="buttons" id="print">print</button>
+
+                        <button class="buttons" id="displaySlug"></button>
                     </div>
 
-                    <div id="recyclingBin"></div>
-                    <div id="bagDiv"></div>
+                    <div id="wraper3bottom">
+                        <div id="rightWrapper">
+                            <div id="recyclingBin">trash trash </div>
+                        </div>
+
+                        <div id="bagDiv">
+                            <div id="bagLeft">
+                                <div id="purposesWrap">
+                                    <br>
+                                    <button class="purposes" id="business">business</button><br><br>
+                                    <button class="purposes" id="skiing">skiing</button><br><br>
+                                    <button class="purposes" id="swimming">swimming</button><br><br>
+                                    <button class="purposes" id="camping">camping</button>
+                                </div>
+                            </div>
+                            <div id="topMarginDiv"></div>
+                            <div id="bagRight"></div>
+                        </div>
+                    </div>
+
 
                 </div>
+
+
             </section>
 
 
@@ -114,8 +151,9 @@
 
     <!-- onepage scroll -->
     <script type="text/javascript" src="public/js/jquery.onepage-scroll.js"></script>
+    <script type="text/javascript" src="public/js/jquery.disablescroll.min.js"></script>
 
     <!-- socket.io -->
-    <script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>        
+    <script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>       
     <script src="public/js/main.js"></script>
 </html>

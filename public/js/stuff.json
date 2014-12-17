@@ -1,37 +1,415 @@
-{
+{ 
     "airpillow": {
         "name": "airpillow", 
-        "tags": ["swimming"],
-        "weather": ["sunny"],
+        "tags": ["camping"],
+        "weather": ["clouds", "rain"],
         "url": "public/images/objects/airpillow.png"
+    },
+    "bikini": {
+        "name": "bikini", 
+        "tags": ["swimming", "camping"],
+        "weather": ["clouds "],
+        "url": "public/images/objects/bikini.png"
     },
     "blanket": {
         "name": "blanket", 
+        "tags": ["camping", "skiing"],
+        "weather": ["show"],
+        "url": "public/images/objects/blanket.png"
+    }, 
+    "bowTie": {
+        "name": "bowTie", 
         "tags": ["business"],
         "weather": [],
-        "url": "public/images/objects/blanket.png"
+        "url": "public/images/objects/bowTie.png"
     },
+    "businessCards": {
+        "name": "businessCards", 
+        "tags": ["business"],
+        "weather": [],
+        "url": "public/images/objects/businessCards.png"
+    },
+    "cameraAnalog": {
+        "name": "cameraAnalog", 
+        "tags": ["camping", "swimming", "skiing"],
+        "weather": [],
+        "url": "public/images/objects/cameraAnalog.png"
+    }, 
+    "cameraDigital": {
+        "name": "cameraDigital", 
+        "tags": ["skiing", "business"],
+        "weather": ["snow"],
+        "url": "public/images/objects/cameraDigital.png"
+    },
+    "cap": {
+        "name": "cap", 
+        "tags": ["skiing", "swimming"],
+        "weather": ["rain", "show"],
+        "url": "public/images/objects/cap.png"
+    },
+    "computer": {
+        "name": "computer", 
+        "tags": ["business", "skiing"],
+        "weather": [],
+        "url": "public/images/objects/computer.png"
+    }, 
+    "computerCharger": {
+        "name": "computerCharger", 
+        "tags": ["business", "skiing"],
+        "weather": ["snow"],
+        "url": "public/images/objects/computerCharger.png"
+    },
+    "divingMask": {
+        "name": "divingMask", 
+        "tags": ["swimming"],
+        "weather": [],
+        "url": "public/images/objects/divingMask.png"
+    },
+    "duckfeet": {
+        "name": "duckfeet", 
+        "tags": ["swimming"],
+        "weather": [],
+        "url": "public/images/objects/duckfeet.png"
+    },
+    "folders": {
+        "name": "folders", 
+        "tags": ["business"],
+        "weather": [],
+        "url": "public/images/objects/folders.png"
+    }, 
+    "filmRoll": {
+        "name": "filmRoll", 
+        "tags": ["skiing", "swimming", "camping"],
+        "weather": ["snow"],
+        "url": "public/images/objects/filmRoll.png"
+    },
+    "bandages": {
+        "name": "bandages", 
+        "tags": ["skiing", "camping", "swimming"],
+        "weather": [],
+        "url": "public/images/objects/bandages.png"
+    },
+    "flashDrive": {
+        "name": "FlashDrive", 
+        "tags": ["business", "skiing"],
+        "weather": [],
+        "url": "public/images/objects/flashDrive.png"
+    }, 
     "flashlight": {
         "name": "flashlight", 
-        "tags": ["skiing"],
+        "tags": ["camping", "skiing"],
         "weather": ["snow"],
         "url": "public/images/objects/flashlight.png"
     },
+    "freshBreath": {
+        "name": "freshBreath", 
+        "tags": ["camping", "business"],
+        "weather": [],
+        "url": "public/images/objects/freshBreath.png"
+    },
+    "glasses": {
+        "name": "glasses", 
+        "tags": ["business"],
+        "weather": [],
+        "url": "public/images/objects/glasses.png"
+    }, 
+    "gloves": {
+        "name": "gloves", 
+        "tags": ["skiing"],
+        "weather": ["snow"],
+        "url": "public/images/objects/gloves.png"
+    },
+    "hat": {
+        "name": "hat", 
+        "tags": ["skiing"],
+        "weather": ["snow"],
+        "url": "public/images/objects/hat.png"
+    },
+    "headphones": {
+        "name": "headphones", 
+        "tags": ["business", "skiing", "swimming", "camping"],
+        "weather": [],
+        "url": "public/images/objects/headphones.png"
+    }, 
+    "hairDrier": {
+        "name": "hairDrier", 
+        "tags": ["skiing", "swimming", "business"],
+        "weather": ["rain", "show"],
+        "url": "public/images/objects/hairDrier.png"
+    },
+    "idCard": {
+        "name": "idCard", 
+        "tags": ["skiing", "business", "camping", "swimming"],
+        "weather": [],
+        "url": "public/images/objects/idCard.png"
+    },
+    "jacket": {
+        "name": "jacket", 
+        "tags": ["business", "camping", "skiing"],
+        "weather": ["rain", "show"],
+        "url": "public/images/objects/jacket.png"
+    },
+    "lenses": {
+        "name": "lenses", 
+        "tags": ["business", "skiing", "swimming"],
+        "weather": [],
+        "url": "public/images/objects/lenses.png"
+    }, 
     "lighter": {
         "name": "lighter", 
-        "tags": ["skiing"],
+        "tags": ["skiing", "camping", "business"],
         "weather": ["snow"],
         "url": "public/images/objects/lighter.png"
     },
-    "raincoat": {
-        "name": "raincoat", 
-        "tags": ["skiing", "business"],
+    "makeup": {
+        "name": "makeup", 
+        "tags": ["swimming", "business"],
         "weather": [],
-        "url": "public/images/objects/raincoat.png"
+        "url": "public/images/objects/makeup.png"
     },
+    "medicine": {
+        "name": "medicine", 
+        "tags": ["business", "camping", "skiing", "swimming"],
+        "weather": ["snow"],
+        "url": "public/images/objects/medicine.png"
+    }, 
+    "notebook": {
+        "name": "notebook", 
+        "tags": ["camping", "business", "swimming"],
+        "weather": ["snow"],
+        "url": "public/images/objects/notebook.png"
+    },
+    "pads": {
+        "name": "pads", 
+        "tags": ["business", "swimming", "camping", "skiing"],
+        "weather": [],
+        "url": "public/images/objects/pads.png"
+    }, 
+    "panties": {
+        "name": "panties", 
+        "tags": ["business", "swimming", "camping", "skiing"],
+        "weather": ["snow"],
+        "url": "public/images/objects/panties.png"
+    },
+    "pants": {
+        "name": "pants", 
+        "tags": ["business", "swimming", "camping", "skiing"],
+        "weather": [],
+        "url": "public/images/objects/pants.png"
+    },
+    "perfume": {
+        "name": "perfume", 
+        "tags": ["business", "swimming"],
+        "weather": [],
+        "url": "public/images/objects/perfume.png"
+    }, 
+    "passport": {
+        "name": "passport", 
+        "tags": ["business", "swimming", "camping", "skiing"],
+        "weather": ["snow"],
+        "url": "public/images/objects/passport.png"
+    },
+    "pen": {
+        "name": "pen", 
+        "tags": ["camping", "business"],
+        "weather": [],
+        "url": "public/images/objects/pen.png"
+    },
+    "phone": {
+        "name": "phone", 
+        "tags": ["business", "swimming", "camping", "skiing"],
+        "weather": [],
+        "url": "public/images/objects/phone.png"
+    },
+    "phoneCharger": {
+        "name": "phoneCharger", 
+        "tags": ["business", "swimming", "camping", "skiing"],
+        "weather": [],
+        "url": "public/images/objects/phoneCharger.png"
+    }, 
+    "pajamas": {
+        "name": "pajamas", 
+        "tags": ["business", "skiing"],
+        "weather": ["snow"],
+        "url": "public/images/objects/pajamas.png"
+    },
+    "rainCoat": {
+        "name": "rainCoat", 
+        "tags": ["skiing", "business", "camping"],
+        "weather": ["rain", "snow"],
+        "url": "public/images/objects/rainCoat.png"
+    },
+    "scarf": {
+        "name": "scarf", 
+        "tags": ["business", "skiing"],
+        "weather": ["snow"],
+        "url": "public/images/objects/scarf.png"
+    }, 
+    "shampoo": {
+        "name": "shampoo", 
+        "tags": ["business", "swimming", "camping", "skiing"],
+        "weather": [],
+        "url": "public/images/objects/shampoo.png"
+    },
+    "shirt": {
+        "name": "shirt", 
+        "tags": ["business", "swimming", "camping", "skiing"],
+        "weather": [],
+        "url": "public/images/objects/shirt.png"
+    },
+    "shoes": {
+        "name": "shoes", 
+        "tags": ["business", "skiing"],
+        "weather": [],
+        "url": "public/images/objects/shoes.png"
+    }, 
+    "shoesFancy": {
+        "name": "shoesFancy", 
+        "tags": ["business"],
+        "weather": ["snow"],
+        "url": "public/images/objects/shoesFancy.png"
+    },
+    "shoesWinter": {
+        "name": "shoesWinter", 
+        "tags": ["skiing", "business"],
+        "weather": ["snow"],
+        "url": "public/images/objects/shoesWinter.png"
+    },
+    "snowboardboots": {
+        "name": "snowboardboots", 
+        "tags": ["skiing"],
+        "weather": [],
+        "url": "public/images/objects/snowboardboots.png"
+    }, 
+    "skiboots": {
+        "name": "skiboots", 
+        "tags": ["skiing"],
+        "weather": ["snow"],
+        "url": "public/images/objects/skiboots.png"
+    },
+    "skies": {
+        "name": "skies", 
+        "tags": ["skiing"],
+        "weather": ["snow"],
+        "url": "public/images/objects/skies.png"
+    },
+    "skirt": {
+        "name": "skirt", 
+        "tags": ["business", "swimming", "camping", "skiing"],
+        "weather": [],
+        "url": "public/images/objects/skirt.png"
+    },
+    "skisticks": {
+        "name": "skisticks", 
+        "tags": ["skiing"],
+        "weather": ["snow"],
+        "url": "public/images/objects/skisticks.png"
+    }, 
+    "sleepingbag": {
+        "name": "sleepingbag", 
+        "tags": ["camping"],
+        "weather": ["snow"],
+        "url": "public/images/objects/sleepingbag.png"
+    },
+    "snickers": {
+        "name": "snickers", 
+        "tags": ["camping", "skiing"],
+        "weather": [],
+        "url": "public/images/objects/snickers.png"
+    },
+    "snowboard": {
+        "name": "snowboard", 
+        "tags": ["skiing"],
+        "weather": ["snow"],
+        "url": "public/images/objects/snowboard.png"
+    }, 
+    "soccerBall": {
+        "name": "soccer_ball", 
+        "tags": ["camping", "swimming"],
+        "weather": [],
+        "url": "public/images/objects/soccerBall.png"
+    },
+    "socks": {
+        "name": "socks", 
+        "tags": ["business", "swimming", "camping", "skiing"],
+        "weather": [],
+        "url": "public/images/objects/socks.png"
+    },
+    "sunblock": {
+        "name": "sunblock", 
+        "tags": ["swimming", "skiing"],
+        "weather": ["clouds"],
+        "url": "public/images/objects/sunblock.png"
+    }, 
+    "sweater": {
+        "name": "sweater", 
+        "tags": ["skiing", "camping"],
+        "weather": ["snow"],
+        "url": "public/images/objects/sweater.png"
+    },
+    "swimcap": {
+        "name": "swimcap", 
+        "tags": ["swimcap"],
+        "weather": [],
+        "url": "public/images/objects/swimcap.png"
+    },
+    "swimmingglasses": {
+        "name": "swimmingglasses", 
+        "tags": ["swimming"],
+        "weather": [],
+        "url": "public/images/objects/swimmingglasses.png"
+    }, 
+    "swimingsuitMan": {
+        "name": "swimingsuitMan", 
+        "tags": ["swimming"],
+        "weather": [],
+        "url": "public/images/objects/swimingsuitMan.png"
+    },
+    "tape": {
+        "name": "tape", 
+        "tags": ["camping"],
+        "weather": [],
+        "url": "public/images/objects/tape.png"
+    },
+    "tent": {
+        "name": "tent", 
+        "tags": ["camping"],
+        "weather": [],
+        "url": "public/images/objects/tent.png"
+    },
+    "TicTack": {
+        "name": "TicTack", 
+        "tags": ["business"],
+        "weather": [],
+        "url": "public/images/objects/TicTack.png"
+    }, 
+    "toothbrush": {
+        "name": "toothbrush", 
+        "tags": ["business", "swimming", "camping", "skiing"],
+        "weather": [],
+        "url": "public/images/objects/toothbrush.png"
+    },
+    "towel": {
+        "name": "towel", 
+        "tags": ["camping", "swimming", "skiing"],
+        "weather": [],
+        "url": "public/images/objects/towel.png"
+    },
+    "travelpillow": {
+        "name": "travelpillow", 
+        "tags": ["business", "camping"],
+        "weather": [],
+        "url": "public/images/objects/travelpillow.png"
+    },
+    "umbrella": {
+        "name": "umrela", 
+        "tags": ["business"],
+        "weather": ["rain"],
+        "url": "public/images/objects/umbrella.png"
+    }, 
     "utensils": {
         "name": "utensils", 
-        "tags": ["business"],
+        "tags": ["camping"],
         "weather": [],
         "url": "public/images/objects/utensils.png"
     }

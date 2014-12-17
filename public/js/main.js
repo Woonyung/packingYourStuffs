@@ -7,8 +7,8 @@
 
 with Woon and Neva :)
 
-- try to make click button function - that passes tagsname as parameters
-and try to append images from the json file that we have
+- purposes with the lighten up button..!!!
+- (person who is responsible for)
 */
 
 var calculate;
@@ -198,6 +198,7 @@ function getExistingData(){
     else{
         // let's get the data!
         var slug = slugDiv.getAttribute('data-slug');
+        // console.log(slug);
         $.ajax({
             type: "GET",
             url: "/api/trip/"+slug,
@@ -228,10 +229,9 @@ function loadStuffs(purposes){
 
         // if tags are matched with purposes  
         if ( _.contains(myJsonStuff[item].tags, purposes)) {
-            console.log(itemName);
+            // console.log(itemName);
             //stuffToPack[purposes].push(myJsonStuff[item]); 
             stuffToPack[purposes][itemName] = myJsonStuff[item]; 
-            console.log(stuffToPack); 
         }
     }
 
@@ -239,6 +239,8 @@ function loadStuffs(purposes){
 }
 
 var arrayForImages;
+
+
 function updateImages(stuffToPack){
     arrayForImages = [];
     console.log(stuffToPack);
@@ -246,7 +248,8 @@ function updateImages(stuffToPack){
     // need to update buttons
     
     // first, clear the div
-    $('#bagDiv').empty();
+    $('#bagRight').empty();
+    // $('#itemList').empty();
     for ( var purpose in stuffToPack){
         // for ( var i = 0; i < stuffToPack[purpose].length; i++){
 
@@ -260,17 +263,37 @@ function updateImages(stuffToPack){
         }
     }
 
-    // loop through imageURL array and append to the #bagDiv so that it has only one image
+    // // get size of the bagRight
+    // var bagwidth = $('#bagRight').width();
+    // var bagheight = $('#bagRight').height();
+    // console.log("the size of bag: " + bagwidth + ":" + bagheight);
+
+    // loop through imageURL array and append to the #bagRight so that it has only one image
     for ( var i = 0; i < imageURL.length; i++){
         // we'll keep this because we spent 20min :) 
-        // var regex1 =/(images\/|\/.png)/gi; 
         var regex1 = /(images\/\objects\/|\/.png)/gi;
         var regex2 = /\.png/gi;
         var id = (imageURL[i].split(regex1)[2]).split(regex2)[0];
-        console.log(imageURL[i]);
 
-        $('#bagDiv').prepend('<img style="width:20px;" class="items" id="' + id + '" src="' + imageURL[i] + '">');
+        $('#bagRight').prepend('<img class="items" id="' + id + '" src="' + imageURL[i] + '">');
+        // $('#itemList').append('<div class="items small"><img id="' + id + '" src="' + imageURL[i] + '"></div>');
+        // $(id).addClass('small');
+
+        // //get IMAGE SIZSE SO THAT WE CAN FIT INTO BAGS
+        // var img = document.getElementById(id); 
+        // // when image is loaded - get width, height 
+        // $(img).load(function(){
+        //     var imgWidth = this.offsetWidth;
+        //     var imgHeight = this.offsetHeight;
+            
+        //     console.log(imgWidth + ", " + imgHeight);
+
+        //     drawDivs(bagwidth, bagheight, imgWidth, imgHeight);
+        // });
+
     }
+
+
     
 
     // draggable?
@@ -280,18 +303,21 @@ function updateImages(stuffToPack){
             $(".items").droppable('enable');
     });
 
-    $( "#bagDiv" ).droppable({
+
+    $( "#bagRight" ).droppable({
         hoverClass: "over",
         drop: function( event, ui ) {
         $( this )
-          .css( "background-color", 'red' );
+          // .css( "background-color", 'red' );
         }
     });
+
+
     $( "#recyclingBin" ).droppable({
         hoverClass: "over",
         drop: function( event, ui ) {
         $( this )
-          .css( "background-color", 'yellow' );
+          // .css( "background-color", 'yellow' );
 
           // **** how can we grab id that we are clicking right now??
           var idToRemove = ui.draggable.context.id;
@@ -309,41 +335,66 @@ function updateImages(stuffToPack){
 
 }
 
-    //when save button is clicked, call event to save to db
-    $('#save').click(function(){
-        console.log('saving to db! >> ' + stuffToPack);
+//when save button is clicked, call event to save to db
+$('#save').click(function(){
+    console.log('saving to db! >> ' + stuffToPack);
 
-        var slugDiv = document.getElementById('slug');
-        if(slugDiv == null){
-            // slug doesn't exist, so we need to save it
-            socket.emit('saveData',stuffToPack);
+    var slugDiv = document.getElementById('slug');
+    if(slugDiv == null){
+        // slug doesn't exist, so we need to save it
+        socket.emit('saveData',stuffToPack);
+    }
+    else{
+        // it exists already, so update it
+        var slug = slugDiv.getAttribute('data-slug');
+        console.log(slug);
+        var dataToUpdate = {
+            slug: slug,
+            stuffToPack: stuffToPack
         }
-        else{
-            // it exists already, so update it
-            var slug = slugDiv.getAttribute('data-slug');
-            var dataToUpdate = {
-                slug: slug,
-                stuffToPack: stuffToPack
-            }
-            socket.emit('updateData', dataToUpdate);  
-        }          
-    });
+        socket.emit('updateData', dataToUpdate);  
+    }
 
-    socket.on('stuffFromServer', function(stuffFromServer){
-        // console.log("stuff from server: " + stuffFromServer);
+    $('#displaySlug').css('visibility', 'visible');   
 
-        //updateImages now
-        updateImages(stuffFromServer);
-        
 });
+
+
+socket.on('stuffFromServer', function(stuffFromServer){
+    // console.log("stuff from server: " + stuffFromServer);
+    //updateImages now
+    updateImages(stuffFromServer);
+
+});
+
+
+// slug from server
+socket.on('slug', function(data){
+    // console.log("sluuug " + data);
+    addSlug(data);
+});
+
+// let users know their slug
+function addSlug(ourSlug){
+    //socket.emit("wantSlug", " please");
+   if ( ourSlug !== undefined){
+        console.log(ourSlug);
+        $('#displaySlug').append('http://packingtogether.herokuapp.com/' + ourSlug);
+        // $('#purposesWrap').append('<a href="http://packingtogether.herokuapp.com/' + ourSlug + '">' 
+        //                 + '<div class="purposes" id="displaySlug">Your DataBase</div>'
+        //                 + '</a>');
+
+    } else {
+        console.log("it is undefined");
+    }
+}
 
 
 var myJsonStuff = {};
 var gotJSON = false;
-
 function dealWithResults(data){
     //do all stuff with results here;
-    console.log(data);
+    // console.log(data);
     myJsonStuff = data;
     gotJSON = true;
 }
@@ -353,11 +404,11 @@ function clickbutton (tagg){
     console.log("click button function");
     $("#"+tagg).toggle(
         function () {
-            $(this).css({"background-color":"#FD706C"});
+            $(this).css({"background-color":"#eeeeee"});
             purposes[tagg] = true;
             console.log( purposes[tagg]); // true
             if(purposes[tagg] == true) {
-                console.log("true");
+                // console.log("true");
 
                 // load json file
                 if(gotJSON){
@@ -377,11 +428,8 @@ function clickbutton (tagg){
         },
         function () {
 
-            $(this).css({"background-color":"black"});
+            $(this).css({"background-color":"white"});
             purposes[tagg] = false;
-            //console.log( purposes['skiing']); // false
-            //$('#bagDiv').html('');
-            //loadStuffs(tagg);
 
             // remove from object if we clicked button again 
             delete stuffToPack[tagg];
@@ -397,13 +445,24 @@ function clickbutton (tagg){
 
 
 $(document).ready(function(){
-
     //see if it an existing trip and get data
     getExistingData();
 
     $.getJSON( "public/js/stuff.json", dealWithResults);
+    
 
-    // scroll library <3
+    // $("#itemList").mouseenter(function(){
+    //     console.log('enter');
+    //     $(this).data('clicked', true);
+    //     mouseThere = true;
+    //     console.log(scrolling);
+    // }).mouseleave(function(){
+    //     console.log("leave");
+    //     console.log(scrolling);
+    // });
+ 
+
+// scroll library <3
     $(".main").onepage_scroll({
         sectionContainer: "section",
         responsiveFallback: 600,
@@ -417,10 +476,23 @@ $(document).ready(function(){
 
         direction: 'vertical'
     });
+    
+ 
+        
+
 
     ////////// SECTION 1 //////////
     // when search button is pressed
+    $("#city").focus(function(){
+        $(this).css("background-color", "#e1e1e1");
+        $(this).css('border-bottom', '1.2px solid white');
+        $(this).css("outline", "none"); // remove bounding box
+    });
+
     $('#searchWeather').click(function(){
+        // when users clicked the button-- opaques the images
+
+        $('#indication').css('visibility', 'visible');
         // empty the div first
         $('#dataPrint_top').html('');
         $('#dataPrint_bottom').html('');
@@ -431,12 +503,22 @@ $(document).ready(function(){
 
         // get weather API data
         getCurrentWeatherData(city);
-    });
+    }).focus(function(){ $(this).blur(); });
+
 
     ////////// SECTION 2 ////////// 
     /// all the tags button    
     clickbutton('business');
     clickbutton('skiing');
     clickbutton('swimming');
+    clickbutton('camping');
+
+    $(".purposes").focus(function(){
+        $(this).blur();
+    });
+
+    $('#itemLits').mouseover(function(){
+        $(this).css('overflow-y', 'scroll');
+    });
 
 });

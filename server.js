@@ -53,6 +53,8 @@ app.get('/:slug',function(req,res){
 
 app.get('/api/trip/:slug',function(req,res){
 	var slugToSearch = req.param('slug');
+	//////////
+	slugForClient = slugToSearch;
 	console.log(slugToSearch);
 	Trip.findOne({slug:slugToSearch},function(err,response){
 		console.log('found the trip! >>' +response);
@@ -62,12 +64,13 @@ app.get('/api/trip/:slug',function(req,res){
 })
 
 var server = http.createServer(app);
-
+var slugForClient;
 var io = require('socket.io')(server);  // Your app passed to socket.io
 
 ////// SOCKETS //////
 // array of all the people connected
 var connectedSockets = [];
+var ourSlug;
 
 // Register a callback function to run when we have an individual connection
 // This is run for each individual user that connects
@@ -101,6 +104,7 @@ io.sockets.on('connection',
     		}
     		//send the same list to all
     		io.sockets.emit('stuffFromServer', data);
+    		
 		});
 
 		socket.on('saveData',function(data){
@@ -110,11 +114,19 @@ io.sockets.on('connection',
 				slug: getRandomSlug()
 			}
 
+			ourSlug = dataToSave.slug;
+			console.log("ourslug " + ourSlug);
+			if (ourSlug !== undefined){ 			//send slag to client
+				io.sockets.emit('slug', ourSlug);
+				console.log('have slug');
+			}
 			var trip = new Trip(dataToSave);
 			trip.save(function(err,response){
 				if(err) console.log('we have an error ' + err);
 				else console.log('data saved! >> ' + response);
+
 			})
+			
 		});
 
 		socket.on('updateData',function(data){
@@ -133,6 +145,8 @@ io.sockets.on('connection',
 			connectedSockets.splice(indexToRemove, 1);
 			console.log("Users connected: " + connectedSockets.length);
 		});
+
+		
 	}
 );
 
