@@ -206,8 +206,9 @@ body {
 }
 
 #recyclingBin {
-  width: 20px;
-  height: 20px;
+  width: 100px;
+  height: 100px;
+  background-color: white;
 }
 
 #itemList {
