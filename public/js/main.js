@@ -562,7 +562,7 @@ $(document).ready(function(){
         $(this).css("outline", "none"); // remove bounding box
     });
 
-    $("#tripName").focus(function(){
+    $("#checkListName").focus(function(){
         $(this).css("background-color", "RGBA(254, 237, 176, 1)");
         $(this).css('border-bottom', '1.2px solid white');
         $(this).css("outline", "none"); // remove bounding box
