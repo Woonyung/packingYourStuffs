@@ -99,10 +99,12 @@
                 <div id="wrapper2">
                 
                     <div id="wrapperForButton">
+                        <input type="text" id="checkListName" placeholder="name your checklist">
+                        <button class="buttons" id="getCheckList">get checklist</button>
                         <button class="buttons" id="add">+</button>
                         <button class="buttons" id="clear">clear bag</button>
                         <button class="buttons" id="save">save</button>
-                        <button class="buttons" id="print">print</button>
+
 
                         <button class="buttons" id="displaySlug"></button>
                     </div>
@@ -132,11 +134,18 @@
 
 
             </section>
-
-<!-- 
             <section class="page4">
-                Done by Neva and Woon with Love &#60;3
-            </section> -->
+                <br><br>
+                <div id="checklistWrapper">
+                    <button class="purposes" id="print">print</button>
+                    <div id="checkList">
+                        <h3 id="yourCheckList">Your Checklist</h3>
+                        <div id="checkListContent"></div>
+                    </div>  
+                    Made by Neva and Woon with Love &#60;3
+                </div>
+            </section>
+
 
         </div> <!-- main -->
     {{#slug}}

@@ -335,6 +335,118 @@ function updateImages(stuffToPack){
 
 }
 
+
+
+socket.on('stuffFromServer', function(stuffFromServer){
+    // console.log("stuff from server: " + stuffFromServer);
+    //updateImages now
+    updateImages(stuffFromServer);
+
+});
+
+// slug from server
+socket.on('slug', function(data){
+    // console.log("sluuug " + data);
+    addSlug(data);
+});
+
+
+// let users know their slug
+function addSlug(ourSlug){
+    //socket.emit("wantSlug", " please");
+   if ( ourSlug !== undefined){
+        console.log(ourSlug);
+        $('#displaySlug').html('http://packingtogether.herokuapp.com/' + ourSlug);
+        // $('#purposesWrap').append('<a href="http://packingtogether.herokuapp.com/' + ourSlug + '">' 
+        //                 + '<div class="purposes" id="displaySlug">Your DataBase</div>'
+        //                 + '</a>');
+
+    } else {
+        console.log("it is undefined");
+    }
+
+}
+
+
+var myJsonStuff = {};
+var gotJSON = false;
+function dealWithResults(data){
+    //do all stuff with results here;
+    // console.log(data);
+    myJsonStuff = data;
+    gotJSON = true;
+}
+
+var checkListName;
+function getCheckList(){
+    $('#checkListContent').empty();
+    $('#yourCheckList').html('Your Checklist');
+    checkListName = $('#checkListName').val();
+
+
+    for ( var tripPurpose in stuffToPack){
+        console.log(stuffToPack[tripPurpose]);
+        var items = stuffToPack[tripPurpose];
+        for ( var item in items ){
+            console.log(items[item].name);
+            $('#checkListContent').append('<div class="content"><img class="checkboxes" src="public/images/UI/checkBox01.png"><span class="itemText">'+
+                                            items[item].name + 
+                                            '</span></div>');
+        }
+    }
+    $('#yourCheckList').html(checkListName);
+}
+
+
+$('#getCheckList').click(function(){
+    getCheckList();
+});
+
+
+// function popup(){
+//     //Get the HTML of div
+//     var divElements = document.getElementById(divID).innerHTML;
+//     //Get the HTML of whole page
+//     var oldPage = document.body.innerHTML;
+
+//     //Reset the page's HTML with div's HTML only
+//     document.body.innerHTML = 
+//       "<html><head><title></title></head><body>" + 
+//       divElements + "</body>";
+
+//     //Print Page
+//     window.print();
+//     window.close();
+
+// }
+
+///////// PRINT FUNCTION 
+function printDiv(divID) {
+    //Get the HTML of div
+    var divElements = document.getElementById(divID).innerHTML;
+    //Get the HTML of whole page
+    var oldPage = document.body.innerHTML;
+
+    //Reset the page's HTML with div's HTML only
+    document.body.innerHTML = 
+      "<html><head><title></title></head><body>" + 
+      divElements + "</body>";
+
+    //Print Page
+    window.print();
+
+    //Restore orignal HTML
+    document.body.innerHTML = oldPage;
+
+  
+}
+
+$('#print').click(function(){
+    // PrintElem('#checkList');
+    printDiv('checkList');
+    Popup($(elem).html());
+});
+
 //when save button is clicked, call event to save to db
 $('#save').click(function(){
     console.log('saving to db! >> ' + stuffToPack);
@@ -356,48 +468,9 @@ $('#save').click(function(){
     }
 
     $('#displaySlug').css('visibility', 'visible');   
-
 });
 
 
-socket.on('stuffFromServer', function(stuffFromServer){
-    // console.log("stuff from server: " + stuffFromServer);
-    //updateImages now
-    updateImages(stuffFromServer);
-
-});
-
-
-// slug from server
-socket.on('slug', function(data){
-    // console.log("sluuug " + data);
-    addSlug(data);
-});
-
-// let users know their slug
-function addSlug(ourSlug){
-    //socket.emit("wantSlug", " please");
-   if ( ourSlug !== undefined){
-        console.log(ourSlug);
-        $('#displaySlug').append('http://packingtogether.herokuapp.com/' + ourSlug);
-        // $('#purposesWrap').append('<a href="http://packingtogether.herokuapp.com/' + ourSlug + '">' 
-        //                 + '<div class="purposes" id="displaySlug">Your DataBase</div>'
-        //                 + '</a>');
-
-    } else {
-        console.log("it is undefined");
-    }
-}
-
-
-var myJsonStuff = {};
-var gotJSON = false;
-function dealWithResults(data){
-    //do all stuff with results here;
-    // console.log(data);
-    myJsonStuff = data;
-    gotJSON = true;
-}
 
 
 function clickbutton (tagg){
@@ -489,6 +562,12 @@ $(document).ready(function(){
         $(this).css("outline", "none"); // remove bounding box
     });
 
+    $("#tripName").focus(function(){
+        $(this).css("background-color", "RGBA(254, 237, 176, 1)");
+        $(this).css('border-bottom', '1.2px solid white');
+        $(this).css("outline", "none"); // remove bounding box
+    });
+
     $('#searchWeather').click(function(){
         // when users clicked the button-- opaques the images
 
@@ -514,6 +593,10 @@ $(document).ready(function(){
     clickbutton('camping');
 
     $(".purposes").focus(function(){
+        $(this).blur();
+    });
+
+    $("#getCheckList").focus(function(){
         $(this).blur();
     });
 

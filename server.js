@@ -41,6 +41,7 @@ app.get('/', function(req, res){
   res.render('index.html');
 });
 
+
 app.get('/:slug',function(req,res){
 	var slugToSearch = req.param('slug');
 	console.log(slugToSearch);
