@@ -388,7 +388,19 @@
         "tags": ["business"],
         "weather": ["rain"],
         "url": "public/images/objects/umbrella.png"
-    }, 
+    },
+    "rainCoat": {
+        "name": "rainCoat", 
+        "tags": ["skiing", "business", "camping"],
+        "weather": ["rain", "snow"],
+        "url": "public/images/objects/rainCoat.png"
+    },
+    "soccerBall": {
+        "name": "soccer ball", 
+        "tags": ["camping", "swimming"],
+        "weather": [],
+        "url": "public/images/objects/soccerBall.png"
+    },
     "travelpillow": {
         "name": "travelpillow", 
         "tags": ["business", "camping"],
