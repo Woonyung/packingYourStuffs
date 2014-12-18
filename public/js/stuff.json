@@ -396,7 +396,7 @@
         "url": "public/images/objects/rainCoat.png"
     },
     "soccerBall": {
-        "name": "soccer ball", 
+        "name": "soccerBall", 
         "tags": ["camping", "swimming"],
         "weather": [],
         "url": "public/images/objects/soccerBall.png"
