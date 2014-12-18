@@ -233,12 +233,6 @@
         "weather": ["snow"],
         "url": "public/images/objects/pajamas.png"
     },
-    "rainCoat": {
-        "name": "rainCoat", 
-        "tags": ["skiing", "business", "camping"],
-        "weather": ["rain", "snow"],
-        "url": "public/images/objects/rainCoat.png"
-    },
     "scarf": {
         "name": "scarf", 
         "tags": ["business", "skiing"],
@@ -323,12 +317,6 @@
         "weather": ["snow"],
         "url": "public/images/objects/snowboard.png"
     }, 
-    "soccerBall": {
-        "name": "soccer ball", 
-        "tags": ["camping", "swimming"],
-        "weather": [],
-        "url": "public/images/objects/soccerBall.png"
-    },
     "socks": {
         "name": "socks", 
         "tags": ["business", "swimming", "camping", "skiing"],
@@ -395,18 +383,18 @@
         "weather": [],
         "url": "public/images/objects/towel.png"
     },
-    "travelpillow": {
-        "name": "travelpillow", 
-        "tags": ["business", "camping"],
-        "weather": [],
-        "url": "public/images/objects/travelpillow.png"
-    },
     "umbrella": {
         "name": "umrela", 
         "tags": ["business"],
         "weather": ["rain"],
         "url": "public/images/objects/umbrella.png"
     }, 
+    "travelpillow": {
+        "name": "travelpillow", 
+        "tags": ["business", "camping"],
+        "weather": [],
+        "url": "public/images/objects/travelpillow.png"
+    },
     "utensils": {
         "name": "utensils", 
         "tags": ["camping"],
