@@ -21,13 +21,28 @@ body {
 }
 
 .sections {
-  height: 800px;
+  height: 600px;
 }
 
 #section1 {
   background-color: #98cdb4;
+  display: block;
 }
 
+#titleDiv {
+  width: 600px;
+  height: 200px;
+  margin: 0 auto;
+  visibility: hidden;
+}
+
+#title {
+  width: 100%;
+  /* margin from top */
+  margin-top: 0px;
+}
+
+/********************************************/
 #section2 {
   background-color: #feedb0;
 }
@@ -47,5 +62,9 @@ body {
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
   .sections {
     height: 300px;
+  }
+
+  #titleDiv {
+    width: 300px;
   }
 }

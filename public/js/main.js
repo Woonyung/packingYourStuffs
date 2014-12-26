@@ -533,25 +533,6 @@ $(document).ready(function(){
     //     console.log("leave");
     //     console.log(scrolling);
     // });
- 
-
-// scroll library <3
-    $(".main").onepage_scroll({
-        sectionContainer: "section",
-        responsiveFallback: 600,
-        animationTime: 1000,
-        afterMove: function(index) {
-          // bag animation
-          console.log("moved");
-        }, 
-        loop: true,
-        keyboard: true,
-
-        direction: 'vertical'
-    });
-    
- 
-        
 
 
     ////////// SECTION 1 //////////
