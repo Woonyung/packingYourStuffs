@@ -131,6 +131,82 @@
     -moz-transform: rotate(0deg);
   }
 }
+.pulse {
+  -webkit-animation-name: pulse;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: pulse;
+  -moz-animation-duration: 1.5s;
+  -moz-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    webkit-transform: scale(0.95);
+    opacity: 0.7;
+  }
+
+  50% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: scale(0.95);
+    opacity: 0.7;
+  }
+}
+@-moz-keyframes pulse {
+  0% {
+    moz-transform: scale(0.95);
+    opacity: 0.7;
+  }
+
+  50% {
+    -moz-transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    -moz-transform: scale(0.95);
+    opacity: 0.7;
+  }
+}
+.floating {
+  -webkit-animation-name: floating;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: floating;
+  -moz-animation-duration: 1.5s;
+  -moz-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes floating {
+  0% {
+    -webkit-transform: translateY(0%);
+  }
+
+  50% {
+    -webkit-transform: translateY(8%);
+  }
+
+  100% {
+    -webkit-transform: translateY(0%);
+  }
+}
+@-moz-keyframes floating {
+  0% {
+    -moz-transform: translateY(0%);
+  }
+
+  50% {
+    -moz-transform: translateY(8%);
+  }
+
+  100% {
+    -moz-transform: translateY(0%);
+  }
+}
 /*************************************************************/
 #section1 {
   background: url("../images/illust_01/background_0.png");
@@ -167,40 +243,8 @@ clouds
 .clouds {
   position: absolute;
   z-index: 10;
-  -webkit-animation-name: floating;
-  -webkit-animation-duration: 1.5s;
-  -webkit-animation-iteration-count: infinite;
-  -moz-animation-name: floating;
-  -moz-animation-duration: 1.5s;
-  -moz-animation-iteration-count: infinite;
 }
 
-@-webkit-keyframes floating {
-  0% {
-    -webkit-transform: translateY(0%);
-  }
-
-  50% {
-    -webkit-transform: translateY(8%);
-  }
-
-  100% {
-    -webkit-transform: translateY(0%);
-  }
-}
-@-moz-keyframes floating {
-  0% {
-    -moz-transform: translateY(0%);
-  }
-
-  50% {
-    -moz-transform: translateY(8%);
-  }
-
-  100% {
-    -moz-transform: translateY(0%);
-  }
-}
 .cloudsA {
   width: 15%;
 }
@@ -382,21 +426,4 @@ girl
   100% {
     -moz-transform: translate(-100vw, -100px);
   }
-}
-/*
---------
-car
---------
-*/
-#road {
-  position: absolute;
-  top: 340px;
-  left: 40%;
-  margin: 0 auto;
-  float: left;
-  width: 50%;
-  height: 150px;
-  background: url("../images/illust_01/car_01_1.gif");
-  background-size: 250px;
-  background-repeat: no-repeat;
 }

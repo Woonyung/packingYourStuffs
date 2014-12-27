@@ -10,8 +10,9 @@
         <meta name="viewport" content="width=device-width">
         
         <!-- stylesheet -->
-        <link rel="stylesheet" type="text/css" href="public/css/stylesheet.css">
         <link rel="stylesheet" type="text/css" href="public/css/animation.css">
+        <link rel="stylesheet" type="text/css" href="public/css/stylesheet.css">
+
 
     </head>
     
@@ -25,19 +26,22 @@
         <img id="girl" src="public/images/illust_01/girl.gif">
 
 
-        <img class="clouds cloudsA" id="cloud2" src="public/images/illust_01/cloud_01.png">
-        <img class="clouds cloudsB" id="cloud3" src="public/images/illust_01/cloud_03.png">
-        <img class="clouds cloudsB" id="cloud4" src="public/images/illust_01/cloud_04.png">
-        <img class="clouds cloudsA" id="cloud1" src="public/images/illust_01/cloud_01.png">
-        <img class="clouds cloudsA" id="cloud5" src="public/images/illust_01/cloud_01.png">
-        <img class="clouds cloudsB" id="cloud6" src="public/images/illust_01/cloud_03.png">
+        <img class="floating clouds cloudsA" id="cloud2" src="public/images/illust_01/cloud_01.png">
+        <img class="floating clouds cloudsB" id="cloud3" src="public/images/illust_01/cloud_03.png">
+        <img class="floating clouds cloudsB" id="cloud4" src="public/images/illust_01/cloud_04.png">
+        <img class="floating clouds cloudsA" id="cloud1" src="public/images/illust_01/cloud_01.png">
+        <img class="floating clouds cloudsA" id="cloud5" src="public/images/illust_01/cloud_01.png">
+        <img class="floating clouds cloudsB" id="cloud6" src="public/images/illust_01/cloud_03.png">
 
         <!-- title div -->
         <div id="titleDiv">
             <img id="title" src="public/images/UI/title_01.png">
         </div>
 
-        <div id="road"></div>
+        <div id="car"></div>
+        <div id="scrollDown">
+            <img class="floating" id="arrow_down" src="public/images/UI/arrow_down.png">
+        </div>
 
     </div> <!-- first page -->
 
@@ -45,15 +49,16 @@
     <div class="sections" id="section2">
         <div id="wrapper1">
             <div id="inputData">
-                <div id="littleMargin"></div>
                 <input type="text" id="city" placeholder="where you want to go?">
                 <button id="searchWeather">SEARCH</button>
             </div>
             
             <div id="dataPrint_wrap">
-                <span id="indication">select the date you are going to travel</span>
+                <img id="indication" src="public/images/UI/selectTheDate_01.png">
+                <br>
+                <br>
+                <br>
                 <div id="dataPrint_top"></div>
-                
                 <div id="dataPrint_bottom"></div>
             </div>
             <div id="countdown"></div>

@@ -21,11 +21,12 @@ body {
 }
 
 .sections {
-  height: 600px;
+  height: 300px;
 }
 
 /********************************************/
 #section1 {
+  height: 600px;
   background-color: #98cdb4;
   display: block;
 }
@@ -43,22 +44,48 @@ body {
   margin-top: 0px;
 }
 
+#car {
+  position: absolute;
+  top: 340px;
+  left: 40%;
+  margin: 0 auto;
+  float: left;
+  width: 50%;
+  height: 150px;
+  background: url("../images/illust_01/car_01_1.gif");
+  background-size: 250px;
+  background-repeat: no-repeat;
+}
+
+#scrollDown {
+  width: 100%;
+  position: absolute;
+  top: 540px;
+  text-align: center;
+}
+
+#arrow_down {
+  width: 35px;
+}
+
 /********************************************/
 #section2 {
   background-color: #feedb0;
+  height: 800px;
 }
 
 #wrapper1 {
   position: relative;
-  -webkit-transform: translateY(-14%);
-  -ms-transform: translateY(-14%);
-  transform: translateY(-14%);
+  -webkit-transform: translateY(20%);
+  -ms-transform: translateY(20%);
+  transform: translateY(20%);
   width: 100vw;
   text-align: center;
   z-index: 400;
 }
 
 #inputData {
+  visibility: hidden;
   height: 40px;
 }
 
@@ -118,16 +145,28 @@ body {
 }
 
 #dataPrint_wrap {
+  position: relative;
+  -webkit-transform: translateY(10%);
+  -ms-transform: translateY(10%);
+  transform: translateY(10%);
   text-align: center;
   margin: 0 auto;
   width: 70%;
-  background-color: magenta;
+  visibility: hidden;
 }
 
 .dateDiv {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  border: none;
   width: 14.6%;
   float: left;
   margin: 1% 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
   background-color: yellow;
 }
 .dateDiv:hover {
@@ -138,6 +177,7 @@ body {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.3em;
+  height: 40px;
 }
 
 #dataPrint_top {
@@ -145,17 +185,19 @@ body {
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  background-color: aqua;
 }
 
 #dataPrint_bottom {
   height: 150px;
   width: 100%;
   margin: 0 auto;
-  background-color: aqua;
 }
 
 #countdown {
+  position: absolute;
+  margin-top: 160px;
+  width: 100%;
+  text-align: center;
   font-size: 18px;
 }
 

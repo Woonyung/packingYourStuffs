@@ -552,7 +552,9 @@ $(document).ready(function(){
     $('#searchWeather').click(function(){
         // when users clicked the button-- opaques the images
 
-        $('#indication').css('visibility', 'visible');
+        $('#dataPrint_wrap').css('visibility', 'visible');
+        $('#indication').addClass('floating');
+
         // empty the div first
         $('#dataPrint_top').html('');
         $('#dataPrint_bottom').html('');
