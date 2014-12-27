@@ -38,7 +38,8 @@ app.configure(function(){
 
 // if routes are "/" render the index file
 app.get('/', function(req, res){
-  res.render('index.html');
+  // res.render('index.html');
+  res.render('construction.html');
 });
 
 
