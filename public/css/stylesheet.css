@@ -121,17 +121,17 @@ body {
   text-align: center;
   margin: 0 auto;
   width: 70%;
+  background-color: magenta;
 }
 
 .dateDiv {
-  width: 80px;
+  width: 14.6%;
   float: left;
-  margin: 10px 5px;
-  padding: 10px 16px;
-  background-color: RGBA(154, 229, 217, 0.6);
+  margin: 1% 1%;
+  background-color: yellow;
 }
 .dateDiv:hover {
-  background-color: RGBA(154, 229, 217, 0.9);
+  background-color: red;
 }
 
 #indication {
@@ -142,13 +142,17 @@ body {
 
 #dataPrint_top {
   height: 150px;
-  margin-left: 10%;
+  width: 100%;
+  margin: 0 auto;
   text-align: center;
+  background-color: aqua;
 }
 
 #dataPrint_bottom {
   height: 150px;
-  margin-left: 10%;
+  width: 100%;
+  margin: 0 auto;
+  background-color: aqua;
 }
 
 #countdown {
